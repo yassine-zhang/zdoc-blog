@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /js/markdown-examples
+      link: /js/trusted-event
     - theme: alt
       text: View on Github
       link: https://github.com/coder-zhangsir/VitePress-Blog

@@ -9,7 +9,7 @@ export default defineConfig({
   description: "一个静态技术笔记网站，专注于您需要的技术 - A static technology note site that focuses on the technology you need",
   cleanUrls: true,
   head: [
-    ['link', { rel: 'icon', href: 'logo.svg' }]
+    ['link', { rel: 'icon', href: '/logo.svg' }]
   ],
 
   themeConfig: {
@@ -19,7 +19,7 @@ export default defineConfig({
       { 
         text: '安全指南',
         items: [
-          { text: 'JavaScript', link: '/js/markdown-examples' },
+          { text: 'JavaScript', link: '/js/trusted-event' },
         ]
       }
     ],
@@ -28,8 +28,7 @@ export default defineConfig({
       {
         text: 'JavaScript',
         items: [
-          { text: 'Markdown Examples', link: '/js/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/js/api-examples' }
+          { text: 'Trusted Event', link: '/js/trusted-event' },
         ]
       }
     ],
@@ -40,7 +39,7 @@ export default defineConfig({
 
     siteTitle: 'Technical notes',
 
-    logo: 'logo.svg',
+    logo: '/logo.svg',
 
     footer: {
       message: 'Released under the MIT License.',
@@ -58,6 +57,15 @@ export default defineConfig({
 
     search: {
       provider: 'local'
+    },
+
+    aside: true,
+  },
+
+  markdown: {
+    theme: {
+      dark: 'github-dark',
+      light: 'github-light'
     },
   },
   
