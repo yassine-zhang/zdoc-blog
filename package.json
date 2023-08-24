@@ -5,6 +5,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "@types/node": "^20.5.4",
     "vitepress": "^1.0.0-rc.4"
   }
 }
