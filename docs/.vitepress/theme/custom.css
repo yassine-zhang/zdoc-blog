@@ -1,14 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap');
+/* 引入字体 */
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
+/* 根变量覆盖 */
 :root {
     --vp-code-color: #3451b2;
-    --vp-font-family-base: 'Noto Sans SC', sans-serif;
-    --vp-font-family-mono: 'Courier Prime', monospace;
+    --vp-c-border: transparent;
+    --vp-font-family-base: 'ZCOOL KuaiLe', 'Noto Sans SC', sans-serif;
+    --vp-font-family-mono: 'Source Code Pro', monospace;
 }
+
+/* .dark 暗黑模式下修改行内代码颜色值 */
 .dark {
     --vp-code-color: #a8b1ff;
 }
 
+/* 修改默认light模式下行内代码颜色 */
 .vp-doc :not(pre,h1,h2,h3,h4,h5,h6)>code {
     color: var(--vp-code-color);
 }

@@ -29,6 +29,7 @@ export default defineConfig({
         text: 'JavaScript',
         items: [
           { text: 'Trusted Event', link: '/js/trusted-event' },
+          { text: 'XSS 非法注入', link: '/js/xss' },
         ]
       }
     ],
