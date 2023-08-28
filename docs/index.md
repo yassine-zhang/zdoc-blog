@@ -14,14 +14,15 @@ hero:
       text: Get Started
       link: /js/trusted-event
     - theme: alt
-      text: View on Github
-      link: https://github.com/coder-zhangsir/VitePress-Blog
+      text: About Me
+      link: /about
 
 features:
   - title: JavaScript
     icon: 
       src: food_2.svg
     details: JavaScript（通常缩写为JS）是一门基于原型和头等函数的多范式高级解释型编程语言，它支持面向对象程序设计、指令式编程和函数式编程。
+    link: /js/trusted-event
   - title: Feature B
     icon: 
       src: food_3.svg
@@ -31,5 +32,3 @@ features:
       src: food_4.svg
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-
-

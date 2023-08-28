@@ -21,6 +21,10 @@ export default defineConfig({
         items: [
           { text: 'JavaScript', link: '/js/trusted-event' },
         ]
+      },
+      {
+        text: '关于',
+        link: '/about'
       }
     ],
 

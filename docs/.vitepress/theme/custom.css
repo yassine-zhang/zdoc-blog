@@ -20,7 +20,7 @@
     /* brand主按钮背景色 */
     --vp-button-brand-bg: #f19b53;
     --vp-button-brand-hover-bg: #efb452;
-    --vp-button-brand-border: #f5d155;
+    --vp-button-brand-border: transparent;
     --vp-button-brand-hover-border: transparent;
     
     /* 主要颜色值 */
