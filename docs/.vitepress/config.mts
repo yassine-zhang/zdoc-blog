@@ -23,9 +23,15 @@ export default defineConfig({
         ]
       },
       {
+        text: '后端',
+        items: [
+          { text: 'docker', link: '/docker/error-summary' }
+        ]
+      },
+      {
         text: '关于',
         link: '/about'
-      }
+      },
     ],
 
     sidebar: [
@@ -34,6 +40,12 @@ export default defineConfig({
         items: [
           { text: 'Trusted Event', link: '/js/trusted-event' },
           { text: 'XSS 非法注入', link: '/js/xss' },
+        ]
+      },
+      {
+        text: 'docker',
+        items: [
+          { text: 'Error Summary', link: '/docker/error-summary' }
         ]
       }
     ],
