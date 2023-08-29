@@ -42,14 +42,14 @@ Server: Docker Desktop 4.22.1 (118664)
 docker login -u 57878778
 ```
 - 检测镜像是否存在
-```
+```txt{1}
 docker images
 REPOSITORY                    TAG       IMAGE ID       CREATED             SIZE
 57878778/my-node-api-server   0.0.1     feb0b37582f2   About an hour ago   879MB
 arm64v8/wordpress             latest    4fdf74a22ef3   12 days ago         617MB
 ```
 - push 镜像
-```
+```txt{1}
 docker push 57878778/my-node-api-server:0.0.1
 The push refers to repository [docker.io/57878778/my-node-api-server]
 f00e5d165562: Preparing 
@@ -64,7 +64,7 @@ c8665ae99a56: Waiting
 52d2e6951bb8: Waiting 
 e3fb8318971a: Waiting 
 9f9478778cf5: Waiting 
-denied: requested access to the resource is denied
+denied: requested access to the resource is denied  // [!code error]
 ```
 :::
 
@@ -96,7 +96,7 @@ docker push 57878778/my-node-api-server:0.0.1
 在国内如果暂时没有找到稳定的梯子那么只能不断执行 `push` 来提升进度
 
 就像我下面这样,至少推了10次才成功
-```
+```txt{1}
 docker push 57878778/my-node-api-server:0.0.1
 The push refers to repository [docker.io/57878778/my-node-api-server]
 f00e5d165562: Pushed 
