@@ -45,7 +45,8 @@ export default defineConfig({
       {
         text: 'docker',
         items: [
-          { text: 'Error Summary', link: '/docker/error-summary' }
+          { text: 'Envrionment Msg', link: '/docker/inspect' },
+          { text: 'Error Summary', link: '/docker/error-summary' },
         ]
       }
     ],

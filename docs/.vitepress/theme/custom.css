@@ -1,12 +1,12 @@
 /* 引入字体 */
-@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap');
 
 /* 根变量覆盖 */
 :root {
     --vp-code-color: #3451b2;
     --vp-c-border: transparent;
-    --vp-font-family-base: 'ZCOOL KuaiLe', 'Noto Sans SC', sans-serif;
+    --vp-font-family-base: 'Noto Serif SC', sans-serif;
     --vp-font-family-mono: 'Source Code Pro', monospace;
 
     /* 标题 */
