@@ -27,7 +27,7 @@ features:
     icon: 
       src: food_3.svg
     details: Docker 是一个应用打包、分发、部署的工具。你也可以把它理解为一个轻量的虚拟机，它只虚拟你软件需要的运行环境，多余的一点都不要，而普通虚拟机则是一个完整而庞大的系统，包含各种不管你要不要的软件
-    link: /docker/error-summary
+    link: /docker/inspect
   - title: Feature C
     icon: 
       src: food_4.svg
