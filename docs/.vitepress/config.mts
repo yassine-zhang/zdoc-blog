@@ -45,8 +45,12 @@ export default defineConfig({
       {
         text: 'docker',
         items: [
-          { text: 'Envrionment Msg', link: '/docker/inspect' },
-          { text: 'Error Summary', link: '/docker/error-summary' },
+          { text: '运行环境信息', link: '/docker/inspect' },
+          { text: '入门到实践', items: [
+            { text: '1.构建Docker镜像', link: '/docker/buildx-image' },
+          ] },
+          { text: '错误汇总', link: '/docker/error-summary' },
+          { text: 'Docker中文文档', link: '/docker/ref-links' },
         ]
       }
     ],
