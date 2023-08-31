@@ -64,4 +64,6 @@ mysql                       latest    bdfb0ec4d54a   2 weeks ago      599MB
 ::: tip
 同一仓库构建镜像是可以多个平台的，更多信息请看下面中文文档
 [https://yeasy.gitbook.io/docker_practice/buildx/multi-arch-images](https://yeasy.gitbook.io/docker_practice/buildx/multi-arch-images)
+
+一般会在本地测试好后再通过本地Docker进行测试，没有问题再去构建，然后服务器那边下载
 :::
