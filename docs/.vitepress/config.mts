@@ -29,6 +29,12 @@ export default defineConfig({
         ]
       },
       {
+        text: '项目规范',
+        items: [
+          { text: 'fs-extra', link: '/specification/fs-extra/intro' },
+        ]
+      },
+      {
         text: '关于',
         link: '/about'
       },
@@ -53,6 +59,18 @@ export default defineConfig({
           ] },
           { text: '错误汇总', link: '/docker/error-summary' },
           { text: 'Docker中文文档', link: '/docker/ref-links' },
+        ]
+      },
+      {
+        text: '项目规范',
+        items: [
+          { 
+            text: 'fs-extra',
+            items: [
+              { text: '0.介绍', link: '/specification/fs-extra/intro' },
+              { text: '1.代码命名', link: '/specification/fs-extra/code-name' },
+            ]
+           }
         ]
       }
     ],
