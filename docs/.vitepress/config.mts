@@ -31,7 +31,7 @@ export default defineConfig({
       {
         text: '项目规范',
         items: [
-          { text: 'fs-extra', link: '/specification/fs-extra/intro' },
+          { text: 'fs-extra', link: '/specification/fs-extra/index' },
         ]
       },
       {
@@ -66,10 +66,7 @@ export default defineConfig({
         items: [
           { 
             text: 'fs-extra',
-            items: [
-              { text: '0.介绍', link: '/specification/fs-extra/intro' },
-              { text: '1.代码命名', link: '/specification/fs-extra/code-name' },
-            ]
+            link: '/specification/fs-extra/index'
            }
         ]
       }
