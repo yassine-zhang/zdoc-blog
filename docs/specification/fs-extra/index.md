@@ -66,3 +66,45 @@ node-fs-extra
 ::: danger
 文件名称前面带符号“.”代表隐藏文件
 :::
+
+## 命名格式
+### 文件夹：
+1. 测试文件夹应该遵循：`__tests__`
+2. 其他文件夹应该遵循：单个英文单词-单个英文单词，例如：`path-exists`
+
+### 文件：
+1. 测试文件：单个英文单词-单个英文单词.test.js, 例如：`copy-sync-dir.test.js`
+
+### 函数&接口&常量
+应该遵循：小驼峰写法
+
+
+## lib/index.js如何继承
+案例：
+```js
+export { calculatePercent, getPercent } from './cal-percent/index.js'
+export { arrayReplaceMultp } from './filter-raw-data/index.js'
+export { loadRawData, loadRawDataSync } from './load-raw-data/index.js'
+export { refresh, refreshSync } from './refresh/index.js'
+```
+
+## ts项目
+如果要使用`TS`进行开发那么也非常简单，只需要留意`tsconfig.json`，具体像如下这样：
+```json
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "allowImportingTsExtensions": true,
+        "noEmit": true
+    },
+    "include": [
+        "lib/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
+```
+我自己根据此项目规范编写了一个项目：一个可以将一组中文字符串提取正负面情绪字词并转换为百分比的库。
+
+[emotional-percentage](https://github.com/yassine-zhang/emotional-percentage/tree/main)
