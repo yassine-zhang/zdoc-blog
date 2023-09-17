@@ -8,7 +8,7 @@ npm create vue@latest
 ```
 
 <p align="center">
-  <img src="https://github.com/vuejs/create-vue/blob/main/media/screenshot-cli.png?raw=true" width="800">
+  <img src="/specification/screenshot-cli.png" width="800">
 </p>
 
 Github Reponsitory: https://github.com/vuejs/create-vue/tree/main
