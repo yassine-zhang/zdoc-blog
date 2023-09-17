@@ -16,7 +16,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { 
+      {
         text: '安全指南',
         items: [
           { text: 'JavaScript', link: '/js/trusted-event' },
@@ -25,13 +25,14 @@ export default defineConfig({
       {
         text: '后端',
         items: [
-          { text: 'docker', link: '/docker/error-summary' }
+          { text: 'docker', link: '/docker/inspect' }
         ]
       },
       {
         text: '项目规范',
         items: [
-          { text: 'fs-extra', link: '/specification/fs-extra/index' },
+          { text: 'fs-extra', link: '/specification/fs-extra/summary' },
+          { text: 'create-vue', link: '/specification/create-vue/summary' },
         ]
       },
       {
@@ -52,11 +53,13 @@ export default defineConfig({
         text: 'docker',
         items: [
           { text: '运行环境信息', link: '/docker/inspect' },
-          { text: '入门到实践', items: [
-            { text: '1.构建Docker镜像', link: '/docker/buildx-image' },
-            { text: '2.推送镜像到Hub', link: '/docker/push-hub' },
-            { text: '3.多容器组合使用', link: '/docker/compose' },
-          ] },
+          {
+            text: '入门到实践', items: [
+              { text: '1.构建Docker镜像', link: '/docker/buildx-image' },
+              { text: '2.推送镜像到Hub', link: '/docker/push-hub' },
+              { text: '3.多容器组合使用', link: '/docker/compose' },
+            ]
+          },
           { text: '错误汇总', link: '/docker/error-summary' },
           { text: 'Docker中文文档', link: '/docker/ref-links' },
         ]
@@ -64,12 +67,16 @@ export default defineConfig({
       {
         text: '项目规范',
         items: [
-          { 
+          {
             text: 'fs-extra',
-            link: '/specification/fs-extra/index'
-           }
+            link: '/specification/fs-extra/summary'
+          },
+          {
+            text: 'create-vue',
+            link: '/specification/create-vue/summary'
+          },
         ]
-      }
+      },
     ],
 
     socialLinks: [
@@ -107,7 +114,7 @@ export default defineConfig({
       light: 'github-light'
     },
   },
-  
+
   // ...其他配置
   async buildEnd(siteConfig) {
     // 配置网站基础路径
