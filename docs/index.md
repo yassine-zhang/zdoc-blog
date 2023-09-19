@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Technical notes"
   text: "艺术来源于生活"
-  tagline: 一个静态技术笔记网站，专注于您需要的技术
+  tagline: 在不触碰法律的前提下，请放肆生活吧 - Live your life without touching the law
   image: 
     src: /logo.svg
     alt: logo
