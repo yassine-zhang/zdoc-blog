@@ -36,6 +36,10 @@ export default defineConfig({
         ]
       },
       {
+        text: '插件使用',
+        link: '/plugin-using/summary'
+      },
+      {
         text: '关于',
         link: '/about'
       },
