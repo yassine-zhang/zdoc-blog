@@ -92,10 +92,9 @@ npm install --save-dev --save-exact prettier
 ```
 
 - 然后创建一个空的配置文件，让编译器和其他工具知道你正在使用`prettier`
-
-::: warning
-调用`node -e|--eval run-script`可以执行node环境下一些函数
-:::
+  ::: warning
+  调用`node -e|--eval run-script`可以执行node环境下一些函数
+  :::
 
 ```shell
 node --eval "fs.writeFileSync('.prettierrc','{}\n')"
