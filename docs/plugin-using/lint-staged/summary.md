@@ -25,7 +25,7 @@ $ git commit
 
 ![Alt text](image.png)
 
-### step2: 需要注册`git`钩子去运行`lint-staged`
+## step2: 需要注册`git`钩子去运行`lint-staged`
 
 推荐我们使用`husky`，那我们就用它，
 
@@ -64,16 +64,26 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 
 因为我们要用`lint-staged`所以可以修改.husky/pre-commit文件为如下内容：
 
-```shell{4}
+```shell
 #!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
+. "$(dirname -- "$0")/_/husky.sh"   // [!code --]
+. "$(dirname "$0")/_/husky.sh"  // [!code ++]
 
-npx lint-staged
+npm test    // [!code --]
+npx lint-staged // [!code ++]
+git add ./  // [!code ++]
 ```
 
-亦或者只将`npm test`改为`npx lint-staged`
+## step3: 安装linter --> `Prettier`
 
-### step3: 安装linter --> `Prettier`
+**什么是Prettier?**
+
+1. 固执己见的代码格式化程序
+2. 支持多种语言
+3. 与大多数编辑器集成
+4. 另外还有一些特色etc...
+
+---
 
 - 首先将`Prettier`安装到本地
 
@@ -121,34 +131,36 @@ npx prettier . --check
 
 `--check`很像`--write`但它只是检查文件是否格式化
 
-### step4: 配置`lint-staged`去运行`linters`和其他任务
+## step4: 配置`lint-staged`去运行`linters`和其他任务
 
 - 打开`package.json`并将类似以下内容写入
-
-```json
-
-```
-
-## 缺点
-
-这样写有一个缺点，我们在提交前会执行`pre-commit`钩子，因此调用了`npx lint-staged`，故而`lint-staged`在内部触发了需要执行的命令，在`package.json`中配置的信息如下：
+  ::: warning
+  配置属性名可以根据`Glob`文件路径匹配模式的语法规范来写
+  :::
 
 ```json
 {
   "lint-staged": {
-    "*.{js,ts,vue,json}": ["prettier . --write"]
+    "*.{js,md,ts,vue,json}": ["prettier --write"]
   }
 }
 ```
 
-因此实际是调用了下面出自`prettier`的CLI命令，格式化了指定的文件
+- 或者忽略上面一条配置方式，创建一个`.lintstagedrc`文件并写入类似以下内容
 
-```shell
-prettier . --write
+```
+{
+  "*.{js,md,ts,vue,json}": [
+    "prettier --write"
+  ]
+}
 ```
 
-而我们格式化新修改后的文件并未暂存，所以需要等待推送到远程库后再次`add commit`才可以
+---
 
-<font color='red'><b>所以：我建议在每次git add ./之前先进行格式化</b></font>
+> 这个配置将用当前暂存后的文件作为参数去执行`prettier --write`
+> 所以，考虑到您这样做`git add file1.ext file2.ext`，`lint-staged`将运行以下命令
 
-不知到在.husky/pre-commit中最后添加`git add ./`能否达到想要的效果
+```shell
+prettier --write file1.ext file2.ext
+```

@@ -85,7 +85,7 @@ export default defineConfig({
         text: 'Repo 使用',
         items: [
           {
-            text: 'lint-staged',
+            text: '防止Git提交垃圾代码',
             link: '/plugin-using/lint-staged/summary'
           },
         ]
