@@ -9,7 +9,7 @@ export default defineConfig({
   description: "一个静态技术笔记网站，专注于您需要的技术 - A static technology note site that focuses on the technology you need",
   cleanUrls: true,
   head: [
-    ['link', { rel: 'icon', href: '/logo.svg' }]
+    ['link', { rel: 'icon', href: '/food_3.svg' }]
   ],
 
   themeConfig: {
@@ -36,8 +36,8 @@ export default defineConfig({
         ]
       },
       {
-        text: '插件使用',
-        link: '/plugin-using/summary'
+        text: 'Repo 使用',
+        link: '/plugin-using/lint-staged/summary'
       },
       {
         text: '关于',
@@ -81,6 +81,15 @@ export default defineConfig({
           },
         ]
       },
+      {
+        text: 'Repo 使用',
+        items: [
+          {
+            text: 'lint-staged',
+            link: '/plugin-using/lint-staged/summary'
+          },
+        ]
+      },
     ],
 
     socialLinks: [
@@ -89,11 +98,11 @@ export default defineConfig({
 
     siteTitle: 'Technical notes',
 
-    logo: '/logo.svg',
+    logo: '/food_3.svg',
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2023-present ZhangSir <57878778@qq.com>'
+      copyright: 'Copyright © 2018-present ZhangSir <57878778@qq.com>'
     },
 
     editLink: {

@@ -7,7 +7,7 @@ hero:
   text: "艺术来源于生活"
   tagline: 在不触碰法律的前提下，请放肆生活吧 - Live your life without touching the law
   image: 
-    src: /logo.svg
+    src: /food_3.svg
     alt: logo
   actions:
     - theme: brand
@@ -26,10 +26,16 @@ features:
   - title: Docker
     icon: 
       src: food_3.svg
-    details: Docker 是一个应用打包、分发、部署的工具。你也可以把它理解为一个轻量的虚拟机，它只虚拟你软件需要的运行环境，多余的一点都不要，而普通虚拟机则是一个完整而庞大的系统，包含各种不管你要不要的软件
+    details: Docker 是一个应用打包、分发、部署的工具。你也可以把它理解为一个轻量的虚拟机，它只虚拟你软件需要的运行环境，多余的一点都不要。
     link: /docker/inspect
-  - title: Feature C
+  - title: 项目规范
     icon: 
       src: food_4.svg
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    link: /specification/create-vue/summary
+    details: 学习不同框架开发者前辈们的编程项目规范，并提取核心点
+  - title: Repo 使用
+    icon: 
+      src: food_5.svg
+    link: /plugin-using/summary
+    details: Github各种有用Repo的使用简记
 ---
