@@ -13,8 +13,8 @@
     "vitepress": "^1.0.0-rc.4"
   },
   "lint-staged": {
-    "*.{js,ts,vue,json}": [
-      "prettier . --write"
+    "*.{js,md,ts,vue,json}": [
+      "prettier --write"
     ]
   }
 }
