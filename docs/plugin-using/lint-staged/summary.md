@@ -74,6 +74,22 @@ npx lint-staged // [!code ++]
 git add ./  // [!code ++]
 ```
 
+上面执行`npx lint-staged`后又执行了`git add ./`的原因是因为后面会触发lint-staged中配置的条件，调用linter的格式化功能。
+
+因此会将文件重新写入，而这时重新写入的文件仍然处于Modify的状态，所以要将其添加到暂存区
+
+### problem
+
+你可能会遇到husky不能执行，不知道为什么？
+
+> hint: The '.husky/pre-commit' hook was ignored because it's not set as executable.
+
+解决：可能是权限不够，无法执行此文件，我们需要将其修改为可执行文件
+
+```shell
+chmod +x .husky/pre-commit
+```
+
 ## step3: 安装linter --> `Prettier`
 
 **什么是Prettier?**
