@@ -74,6 +74,17 @@ npx lint-staged // [!code ++]
 git add ./  // [!code ++]
 ```
 
+::: warning
+第一行这是一种特殊的注释语法，常见于脚本文件的开头。它用于指定脚本在运行时使用的解释器。
+像`#!/usr/bin/env sh`也可用`#!/bin/sh`来代替
+
+具体解释如下：
+
+- `#!` 表示文件的Shebang（也称为Hashbang），用于告诉操作系统该脚本文件的解释器位置。
+- `/bin/sh` 是指定使用的Shell解释器的绝对路径。在大多数UNIX/Linux系统中，/bin/sh 是指向默认的Bourne Shell或其兼容性版本的链接。
+- `/usr/bin/env` 是一个命令，用于在执行环境的 $PATH 搜索路径中查找并运行指定的程序。
+  :::
+
 上面执行`npx lint-staged`后又执行了`git add ./`的原因是因为后面会触发lint-staged中配置的条件，调用linter的格式化功能。
 
 因此会将文件重新写入，而这时重新写入的文件仍然处于Modify的状态，所以要将其添加到暂存区
