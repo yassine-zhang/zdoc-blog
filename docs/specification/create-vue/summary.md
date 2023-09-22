@@ -22,7 +22,7 @@ npm create vue@latest
   <img src="./catalogue.png" width="800">
 </p>
 
-目录分析：
+**目录分析**：
 
 - `.github/workflows` 用于Github仓库的一种自动化action工具，例如当你搭建了一个VitePress博客仓库，那么可以在代码推送后采用Github Actions去自动化构建和部署项目
 
@@ -37,3 +37,29 @@ npm create vue@latest
 - `template` 根据开发者安装时CLI选项来将制定模版合并到创建的项目中
 
 - `utils` 工具脚本存放位置
+
+- `.gitignore` 在使用git提交代码时设置哪些可以忽略不提交
+
+- `.gitmodules` git子模块配置文件
+
+- `.prettierignore` Prettier格式化工具在格式化时所需忽略的文件
+
+- `.prettierrc` Prettier格式化配置文件
+
+- `LICENSE` 当前仓库的开源协议，例如MIT、GPL、Apache、BSD...
+
+- `tsconfig.json` ts项目配置文件，如果图方便可以使用[@tsconfig/node18](https://www.npmjs.com/package/@tsconfig/node18)提供的公用配置文件来作为扩展，
+
+```json
+{ "extends": "@tsconfig/node18/tsconfig.json" }
+```
+
+## 文件分析
+
+## .gitmodule
+
+## .prettierignore
+
+## package.json
+
+## tsconfig.json
