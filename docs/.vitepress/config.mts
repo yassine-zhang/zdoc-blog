@@ -88,6 +88,10 @@ export default defineConfig({
             text: '防止Git提交垃圾代码',
             link: '/plugin-using/lint-staged/summary'
           },
+          {
+            text: 'Prettier格式化',
+            link: '/plugin-using/prettier/summary'
+          },
         ]
       },
     ],
