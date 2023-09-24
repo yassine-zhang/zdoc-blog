@@ -58,8 +58,111 @@ npm create vue@latest
 
 ## .gitmodule
 
+```shell
+[submodule "playground"]
+	path = playground
+	url = https://github.com/vuejs/create-vue-templates.git
+```
+
+在上面文件中，可以看出定义了一个子模块名叫`playground，之后分别指定了path&url，非常简单的一个文件
+
 ## .prettierignore
 
+```shell
+pnpm-lock.yaml
+
+# prettier doesn't respect newlines between chained methods
+# https://github.com/prettier/prettier/issues/7884
+**/*.spec.js
+**/*.spec.ts
+**/dist
+# https://github.com/prettier/prettier/issues/5246
+**/*.html
+
+playground
+```
+
+在这个文件中指定了一些无意义无需格式化的文件及目录，
+
+其中
+
+- `pnpm-lock.yaml` 本身就是自动生成的文件，像格式也理应不发生变化否则后续可能会出一些依赖的问题，
+- `playground` 这是子模块负责的板块，理应子模块负责
+
 ## package.json
+
+```json
+{
+  "name": "create-vue",
+  "version": "3.7.5",
+  "description": "An easy way to start a Vue project",
+  "type": "module", // [!code focus]
+  "bin": {
+    // [!code focus]
+    "create-vue": "outfile.cjs" // [!code focus]
+  }, // [!code focus]
+  "files": [
+    // [!code focus]
+    "outfile.cjs", // [!code focus]
+    "template" // [!code focus]
+  ], // [!code focus]
+  "engines": {
+    "node": ">=v16.20.0"
+  },
+  "scripts": {
+    // [!code focus]
+    "prepare": "husky install", // [!code focus]
+    "format": "prettier --write .", // [!code focus]
+    "build": "zx ./scripts/build.mjs", // [!code focus]
+    "snapshot": "zx ./scripts/snapshot.mjs", // [!code focus]
+    "pretest": "run-s build snapshot", // [!code focus]
+    "test": "zx ./scripts/test.mjs", // [!code focus]
+    "prepublishOnly": "zx ./scripts/prepublish.mjs" // [!code focus]
+  }, // [!code focus]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/create-vue.git"
+  },
+  "keywords": [],
+  "author": "Haoqun Jiang <haoqunjiang+npm@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/create-vue/issues"
+  },
+  "homepage": "https://github.com/vuejs/create-vue#readme",
+  "devDependencies": {
+    // [!code focus]
+    "@tsconfig/node18": "^18.2.2", // [!code focus]
+    "@types/eslint": "^8.44.2", // [!code focus]
+    "@types/node": "^18.17.17", // [!code focus]
+    "@types/prompts": "^2.4.4", // [!code focus]
+    "@vue/create-eslint-config": "^0.3.2", // [!code focus]
+    "@vue/tsconfig": "^0.4.0", // [!code focus]
+    "ejs": "^3.1.9", // [!code focus]
+    "esbuild": "^0.18.20", // [!code focus]
+    "esbuild-plugin-license": "^1.2.2", // [!code focus]
+    "husky": "^8.0.3", // [!code focus]
+    "kolorist": "^1.8.0", // [!code focus]
+    "lint-staged": "^14.0.1", // [!code focus]
+    "minimist": "^1.2.8", // [!code focus]
+    "npm-run-all2": "^6.0.6", // [!code focus]
+    "prettier": "^3.0.3", // [!code focus]
+    "prompts": "^2.4.2", // [!code focus]
+    "zx": "^7.2.3" // [!code focus]
+  }, // [!code focus]
+  "lint-staged": {
+    // [!code focus]
+    "*.{js,ts,vue,json}": [
+      // [!code focus]
+      "prettier --write" // [!code focus]
+    ] // [!code focus]
+  } // [!code focus]
+}
+ // [!code focus]
+```
+
+[点我查看npm package.json配置官方文档](https://docs.npmjs.com/cli/v9/configuring-npm/package-json)
+
+上面文件中模糊部分是发布包到npm所需基本属性，我在此假借隐藏
 
 ## tsconfig.json
