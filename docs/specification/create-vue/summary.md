@@ -16,7 +16,15 @@ npm create vue@latest
   <img src="./screenshot-cli.png" width="800">
 </p>
 
-## 项目目录
+## npm create vue@latest
+
+![Npm Init Synopsis](npm-init-synopsis.png)
+
+它会执行 npm 包管理器中的 `create-vue` 包。`npx` 是 npm 5.2.0 版本引入的工具，用于直接执行项目依赖中的可执行文件。
+
+<font color="#f2d478"><b>当你运行 `npx create-vue@latest` 命令时，npm 会下载并执行 `create-vue` 包中的可执行文件</b></font>，该文件负责创建一个新的 Vue.js 项目。`create-vue` 是一个官方提供的用于快速创建 Vue.js 项目的工具包。
+
+## project directory
 
 <p align="center">
   <img src="./catalogue.png" width="800">
@@ -54,9 +62,16 @@ npm create vue@latest
 { "extends": "@tsconfig/node18/tsconfig.json" }
 ```
 
-## 文件分析
+## file analysis
 
-## .gitmodule
+关于文件分析具体内容请往下看
+
+- [.gitmodule](#.gitmodule)
+- [.prettierignore](#.prettierignore)
+- [package.json](#package.json)
+- [tsconfig.json](#tsconfig.json)
+
+## xx.gitmodule {#.gitmodule}
 
 ```shell
 [submodule "playground"]
@@ -66,7 +81,7 @@ npm create vue@latest
 
 在上面文件中，可以看出定义了一个子模块名叫`playground，之后分别指定了path&url，非常简单的一个文件
 
-## .prettierignore
+## xx.prettierignore {#.prettierignore}
 
 ```shell
 pnpm-lock.yaml
@@ -89,7 +104,7 @@ playground
 - `pnpm-lock.yaml` 本身就是自动生成的文件，像格式也理应不发生变化否则后续可能会出一些依赖的问题，
 - `playground` 这是子模块负责的板块，理应子模块负责
 
-## package.json
+## xx.package.json {#package.json}
 
 ```json
 {// [!code focus]
@@ -158,4 +173,46 @@ playground
 
 上面文件中模糊部分是发布包到npm所需基本属性，我在此假借隐藏
 
-## tsconfig.json
+- `type` 当你在包中有"type": "module"时。Json文件，你的源代码应该使用import语法。当你没有时，你应该使用require语法;也就是说，向包中添加"type": "module"。json启用ES 6模块。
+
+- `bin` 在此添加的可执行文件，npm都会将其添加到**node_module/.bin**中，如果是安装的全局包-g，那么就可以直接在命令行调用可执行文件的名字来执行，如果是本地包，那么可以通过`.bin/my-executable`来执行或者`npx my-executable`
+
+- `files` 在发布npm包时要提取哪些文件作为包文件，包括文件、目录或glob模式(*、**/*等)。省略该字段将使其默认为["*"]，这意味着它将包含所有文件。
+  ![Entry Always Included](entry-always-included.png)
+
+- `devDependencies` 开发扩展包
+  - `@tsconfig/node18` node18平台下通用tconfig扩展
+  - `husky` 方便提供Git钩子
+  - `prettier` 格式化文件，包含几十种文件的格式化
+  - `esbuild` 这是一个JavaScript打包和压缩器
+  - `esbuild-plugin-license` [插件]这使得使用esbuild构建后会输出特定第三方许可证
+  - `zx` 面向前端的[Shell编程利器](https://gist.github.com/banyudu/3e700abb0c911caa9d40bc3c808de4d0)
+  - `kolorist` 控制台输出信息含有颜色的工具
+  - `lint-staged` git commit 时添加几道工序避免提交垃圾代码
+  - `ejs` 高效的嵌入式 JavaScript 模板引擎。
+  - `minimist` 当我们编写CLI脚本时，使用此工具可以帮助解析参数选项
+  - `npm-run-all2` 可以同步或异步执行npm scripts
+  - `prompts` 轻量级，美观和用户友好的交互式提示
+
+
+- `scripts` 包含的快捷指令脚本，可以使用 **npm run run-script** 来调用
+  - `prepare` 本地初始化husky
+  - `format` 调用prettier写入功能格式化所有文件
+  - `"prepublishOnly": "zx ./scripts/prepublish.mjs"` 通过zx调用基于zx预发布功能，如果文件开头写了#!/usr/bin/env zx，那么可以直接通过文件名字来调用，也可以zx filename来调用 
+
+- `lint-staged` lint-staged配置，详细请参考repo>[lint-staged](/plugin-using/lint-staged/summary.md)
+
+## xx.tsconfig.json {#tsconfig.json}
+
+```json{2}
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "include": ["index.ts", "utils/**/*"],
+  "compilerOptions": {
+    "strict": false,
+    "resolveJsonModule": true
+  }
+}
+```
+
+上面"extends"表示继承了来自"@tsconfig/node18"的通用配置信息，并在此基础上做修改
