@@ -92,25 +92,22 @@ playground
 ## package.json
 
 ```json
-{
+{// [!code focus]
   "name": "create-vue",
   "version": "3.7.5",
   "description": "An easy way to start a Vue project",
   "type": "module", // [!code focus]
-  "bin": {
-    // [!code focus]
+  "bin": {// [!code focus]
     "create-vue": "outfile.cjs" // [!code focus]
   }, // [!code focus]
-  "files": [
-    // [!code focus]
+  "files": [// [!code focus]
     "outfile.cjs", // [!code focus]
     "template" // [!code focus]
   ], // [!code focus]
   "engines": {
     "node": ">=v16.20.0"
   },
-  "scripts": {
-    // [!code focus]
+  "scripts": {// [!code focus]
     "prepare": "husky install", // [!code focus]
     "format": "prettier --write .", // [!code focus]
     "build": "zx ./scripts/build.mjs", // [!code focus]
@@ -130,8 +127,7 @@ playground
     "url": "https://github.com/vuejs/create-vue/issues"
   },
   "homepage": "https://github.com/vuejs/create-vue#readme",
-  "devDependencies": {
-    // [!code focus]
+  "devDependencies": {// [!code focus]
     "@tsconfig/node18": "^18.2.2", // [!code focus]
     "@types/eslint": "^8.44.2", // [!code focus]
     "@types/node": "^18.17.17", // [!code focus]
@@ -150,15 +146,12 @@ playground
     "prompts": "^2.4.2", // [!code focus]
     "zx": "^7.2.3" // [!code focus]
   }, // [!code focus]
-  "lint-staged": {
-    // [!code focus]
-    "*.{js,ts,vue,json}": [
-      // [!code focus]
+  "lint-staged": {// [!code focus]
+    "*.{js,ts,vue,json}": [// [!code focus]
       "prettier --write" // [!code focus]
     ] // [!code focus]
   } // [!code focus]
-}
- // [!code focus]
+}// [!code focus]
 ```
 
 [点我查看npm package.json配置官方文档](https://docs.npmjs.com/cli/v9/configuring-npm/package-json)

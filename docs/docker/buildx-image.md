@@ -1,11 +1,13 @@
 # 构建镜像
+
 如果要 `build` 镜像，那么必要的前提是需要有一个Dockerfile文件来记录一些信息
 
 正如下所示Dockerfile文件案例，是一个用Nodejs跑起来的后端API项目
+
 ```Dockerfile
 FROM node:11
 # 标签信息，格式key=value
-LABEL author="zhangsir" 
+LABEL author="zhangsir"
 
 # 复制代码
 ADD . /app
@@ -28,6 +30,7 @@ CMD node app.js
 
 接下来我们构建 `linux/amd64` 平台镜像，代码如下
 ![Buildx](/docker/Docker-Buildx.svg)
+
 ```bash{1}
 docker buildx build --platform linux/amd64 -t 57878778/node-api-amd64:0.0.2 .   // [!code focus]
 [+] Building 2.8s (10/10) FINISHED                                                                                                     docker:desktop-linux
@@ -51,6 +54,7 @@ docker buildx build --platform linux/amd64 -t 57878778/node-api-amd64:0.0.2 .   
 ```
 
 查看本地镜像
+
 ```bash{1}
 docker image ls     // [!code focus]
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
