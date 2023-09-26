@@ -81,13 +81,17 @@ export default defineConfig({
         text: "Repo 使用",
         items: [
           {
-            text: "防止Git提交垃圾代码",
+            text: "防止提交屎/lint-staged",
             link: "/plugin-using/lint-staged/summary",
           },
           {
-            text: "Prettier格式化",
+            text: "代码格式化/Prettier",
             link: "/plugin-using/prettier/summary",
           },
+          {
+            text: "stdin&out着色/kolorist",
+            link: "/plugin-using/kolorist/summary"
+          }
         ],
       },
     ],
