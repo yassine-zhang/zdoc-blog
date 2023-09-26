@@ -91,7 +91,11 @@ export default defineConfig({
           {
             text: "stdin&out着色/kolorist",
             link: "/plugin-using/kolorist/summary"
-          }
+          },
+          {
+            text: "前端Shell利器/zx",
+            link: "/plugin-using/zx/summary"
+          },
         ],
       },
     ],
