@@ -66,6 +66,7 @@ var parseArgs = require("minimist");
 
 - `opts.string` - 用于指定哪些命令行参数应该被解析为字符串类型
 - `opts.boolean` - 用于指定哪些命令行参数应该被解析为布尔类型
+  - 一旦在数组中定义了某个参数名，那么即使在调用脚本时没有添加参数项，也会默认返回该参数并赋值`false`，这一点和`opts.string`不同
 - `opts.alias` - 用于为命令行参数设置别名
 - `opts.default` - 用于为命令行参数设置默认值
 - `opts.stopEarly` - 用于指定在遇到非选项参数时是否停止解析后续的命令行参数
@@ -79,13 +80,25 @@ var parseArgs = require("minimist");
 }
 ```
 
-注意：当设置了`opts['--']`之后对参数的解析仍然在`--`之后结束。
+::: warning 注意：
 
-- `opts.unknown` - 用于定义未知选项的处理方式。当有未知的选项出现时，可以使用该选项来控制 minimist 的行为,opts.unknown 可以是一个函数或布尔值。下面是对这两种用法的说明：
+1. `opts['--']`可以当作分隔符，将参数数据分割到相应变量中。
+2. 如果不需要此功能请将`{ '--': true }`注释掉并且应避免在调用时向参数内添加`--`。
+
+错误案例：（这里已将script.js改为可执行脚本，只需在首行添加`#!/usr/bin/env node`）
+
+```shell
+./script.js --age 17 --sex -- one two three --beautiful
+```
+
+3. `--`是固定的，不应使用其他字符串信息来代替
+   :::
+
+- `opts.unknown` - 用于定义未知选项的处理方式。当有未知的选项出现时，可以使用该选项来控制 `minimist` 的行为,`opts.unknown` 下面是对用法的说明：
 
 ::: details
 
-1. 函数用法：将 `opts.unknown` 设置为一个函数，用于自定义对未知选项的处理。该函数接收三个参数：`option`（未知选项的名称）、`value`（未知选项的值）和 `arg`（所有未解析的选项数组）。函数应返回 `true` 或一个解析后的值来覆盖未知选项的默认行为。例如：
+将 `opts.unknown` 设置为一个函数，用于自定义对未知选项的处理。该函数接收三个参数：`option`（未知选项的名称）、`value`（未知选项的值）和 `arg`（所有未解析的选项数组）。函数应返回 `true` 或一个解析后的值来覆盖未知选项的默认行为。例如：
 
 ```javascript
 const args = require("minimist")(process.argv.slice(2), {
@@ -96,19 +109,8 @@ const args = require("minimist")(process.argv.slice(2), {
 });
 ```
 
-这个例子中，当解析到未知选项时，会打印消息并返回 `true`，表示忽略该选项。
+这个例子中，执行代码时，当解析到未知选项时，会在控制台打印消息并返回 `true`，表示忽略该选项。此时`argv._`中将没有任何数据，而当返回 `false` 时将表示不忽略未知选项
 
-布尔值用法：将 `opts.unknown` 设置为 `true` 或 `false，来控制未知选项的默认行为。当设置为` true 时，未知选项将作为键值对存储在结果对象中；当设置为 `false` 时，未知选项将被忽略，默认值为 `false`。例如：
-
-```javascript
-const args = require("minimist")(process.argv.slice(2), {
-  unknown: true,
-});
-```
-
-在这个例子中，未知选项将被存储在结果对象中。
-
-请注意，如果未指定 `opts.unknown`，则默认行为是忽略未知选项。
 :::
 
 ## 安装
