@@ -127,7 +127,7 @@ MIT
 [npm-version-svg]: https://versionbadg.es/minimistjs/minimist.svg
 [npm-badge-png]: ./npm-install.png
 [license-image]: https://img.shields.io/npm/l/minimist.svg
-[license-url]: LICENSE
+[license-url]: https://github.com/minimistjs/minimist/blob/main/LICENSE
 [downloads-image]: https://img.shields.io/npm/dm/minimist.svg
 [downloads-url]: https://npm-stat.com/charts.html?package=minimist
 [codecov-image]: https://codecov.io/gh/minimistjs/minimist/branch/main/graphs/badge.svg
