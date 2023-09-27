@@ -96,6 +96,10 @@ export default defineConfig({
             text: "前端Shell利器/zx",
             link: "/plugin-using/zx/summary"
           },
+          {
+            text: "解析参数选项/minimist",
+            link: "/plugin-using/minimist/summary"
+          },
         ],
       },
     ],
@@ -130,7 +134,7 @@ export default defineConfig({
       provider: "local",
     },
 
-    aside: true,
+    aside: false,
   },
 
   markdown: {
