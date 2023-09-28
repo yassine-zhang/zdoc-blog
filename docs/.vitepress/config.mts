@@ -100,6 +100,10 @@ export default defineConfig({
             text: "解析参数选项/minimist",
             link: "/plugin-using/minimist/summary"
           },
+          {
+            text: "交互式提示/prompts",
+            link: "/plugin-using/prompts/summary"
+          },
         ],
       },
     ],
