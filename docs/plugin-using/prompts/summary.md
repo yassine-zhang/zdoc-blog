@@ -235,10 +235,12 @@ Default: `() => {}`
 ```js
 {
   type: String | Function,
+  style: String,
   name: String | Function,
   message: String | Function,
   initial: String | Function | Async Function
   format: Function | Async Function,
+  validate: Function,
   onRender: Function
   onState: Function
   stdin: Readable
@@ -281,6 +283,13 @@ Type: `String|Function`
   message: `I'll never be shown anyway`,
 }
 ```
+
+### style
+
+Type: `String`
+
+它的作用不大，表示用户输入的内容显示样式。这里`'default'`代表样式随`type`设定而变化。
+当然可以输入这些渲染样式可选值（`default`, `password`, `invisible`, `emoji`），默认该值为`'default'`。
 
 ### name
 
@@ -326,6 +335,24 @@ Type: `Function`
 }
 ```
 
+### validate
+
+Type: `Function`
+
+接收用户输入，如果值有效你应该返回`true`，否则返回一个错误信息`String`。如果返回`false`，将显示一条默认的错误消息。
+
+**Example:**
+
+```js
+{
+    name: 'packageName',
+    type: () => (isValidPackageName(targetDir) ? null : 'text'),
+    message: 'Package name:',
+    initial: () => toValidPackageName(targetDir),
+    validate: (dir) => isValidPackageName(dir) || 'Invalid package.json name'
+}
+```
+
 ### onRender
 
 Type: `Function`
@@ -366,3 +393,424 @@ Type: `Stream`
 如果你需要使用不同的流，例如[process.stderr](https://www.nodeapp.cn/process.html#process_process_stderr)，你可以用`stdin`和`stdout`设置这些属性。
 
 ![split](./split.png)
+
+## ❯ Types {#-types}
+
+- [text](#textmessage-initial-style)
+- [password](#passwordmessage-initial)
+- [invisible](#invisiblemessage-initial)
+- [number](#numbermessage-initial-max-min-style)
+- [confirm](#confirmmessage-initial)
+- [list](#listmessage-initial)
+- [toggle](#togglemessage-initial-active-inactive)
+- [select](#selectmessage-choices-initial-hint-warn)
+- [multiselect](#multiselectmessage-choices-initial-max-hint-warn)
+- [autocompleteMultiselect](#multiselectmessage-choices-initial-max-hint-warn)
+- [autocomplete](#autocompletemessage-choices-initial-suggest-limit-style)
+- [date](#datemessage-initial-warn)
+
+> 为了省事，我将所有提问通用的配置选项都取消了解释，也就是上方[提问对象](#-prompt-objects)里介绍的属性
+
+---
+
+### text(message, [initial], [style]) {#textmessage-initial-style}
+
+> 自由文本输入。
+
+按下 <kbd>tab</kbd> 自动填充提供的初始值。
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/text.gif" alt="text prompt" width="499" height="103" />
+
+```js
+{
+  type: 'text',
+  name: 'value',
+  message: `What's your twitter handle?`
+}
+```
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### password(message, [initial]) {#passwordmessage-initial}
+
+> 带有屏蔽输入的密码提问。
+
+这个提示类似于 `text` 类型提示，需将`type` 设置为 `'password'`。
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/password.gif" alt="password prompt" width="499" height="103" />
+
+```js
+{
+  type: 'password',
+  name: 'value',
+  message: 'Tell me a secret'
+}
+```
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### invisible(message, [initial]) {#invisiblemessage-initial}
+
+> 用户可以输入不可见的文本
+
+隐藏提问的工作方式类似于`sudo`，无论任何情况输入是不可见的。
+隐藏提问就像`'text'`提问类型，只需将`style`设置为`'invisible'`。
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/invisible.gif" alt="invisible prompt" width="499" height="103" />
+
+```js
+{
+  type: 'invisible',
+  name: 'value',
+  message: 'Enter password'
+}
+```
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### number(message, initial, [max], [min], [style]) {#numbermessage-initial-max-min-style}
+
+> 允许用户输入数字。
+
+当使用数字类型（type）时，你可以使键入<kbd>up</kbd><kbd>down</kbd>去增减值。只有数字允许输入进来，敲击<kbd>tab</kbd>自动填充`initial`内的默认值。
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/number.gif" alt="number prompt" width="499" height="103" />
+
+```js
+{
+  type: 'number',
+  name: 'value',
+  message: 'How old are you?',
+  initial: 0,
+  style: 'default',
+  min: 2,
+  max: 10
+}
+```
+
+#### Options
+
+| Param     |   Type    | Description                           |
+| --------- | :-------: | ------------------------------------- |
+| max       | `number`  | 最大值，默认`Infinity`                |
+| min       | `number`  | 最小值，默认`-infinity`               |
+| float     | `boolean` | 允许输入浮点数，默认值为`false`       |
+| round     | `number`  | 将`float`值四舍五入到x位，默认值为`2` |
+| increment | `number`  | 当使用方向键时的步长，默认为`1`       |
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### confirm(message, [initial]) {#confirmmessage-initial}
+
+> 经典的yes/no提问。
+
+敲击 <kbd>y</kbd>或<kbd>n</kbd>来确认或拒绝。
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/confirm.gif" alt="confirm prompt" width="499" height="103" />
+
+```js
+{
+  type: 'confirm',
+  name: 'value',
+  message: 'Can you confirm?',
+  initial: true
+}
+```
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### list(message, [initial]) {#listmessage-initial}
+
+> 可以返回一个数组的列表提问。
+
+像`text`提问一样，但输出是一个`Array`，它通过`separator`进行字符串分割。
+
+```js
+{
+  type: 'list',
+  name: 'value',
+  message: 'Enter keywords',
+  initial: '',
+  separator: ','
+}
+```
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/list.gif" alt="list prompt" width="499" height="103" />
+
+| Param     |   Type   | Description                                                             |
+| --------- | :------: | ----------------------------------------------------------------------- |
+| separator | `string` | 字符串分割符，添加此属性自动去除数组每个字符串前后的空白，默认值：`','` |
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### toggle(message, [initial], [active], [inactive]) {#togglemessage-initial-active-inactive}
+
+> 交互式 toggle/switch 提问。
+
+使用<kbd>arrow keys</kbd>/<kbd>tab</kbd>/<kbd>space</kbd>来切换之间的选项。
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/toggle.gif" alt="toggle prompt" width="499" height="103" />
+
+```js
+{
+  type: 'toggle',
+  name: 'value',
+  message: 'Can you confirm?',
+  initial: true,
+  active: 'yes',
+  inactive: 'no'
+}
+```
+
+#### Options
+
+| Param    |   Type   | Description                           |
+| -------- | :------: | ------------------------------------- |
+| active   | `string` | 文本`active`状态，默认显示为`'on'`    |
+| inactive | `string` | 文本`inactive`状态，默认显示为`'off'` |
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### select(message, choices, [initial], [hint], [warn]) {#selectmessage-choices-initial-hint-warn}
+
+> Interactive select prompt.
+
+Use <kbd>up</kbd>/<kbd>down</kbd> to navigate. Use <kbd>tab</kbd> to cycle the list.
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/select.gif" alt="select prompt" width="499" height="130" />
+
+```js
+{
+  type: 'select',
+  name: 'value',
+  message: 'Pick a color',
+  choices: [
+    { title: 'Red', description: 'This option has a description', value: '#ff0000' },
+    { title: 'Green', value: '#00ff00', disabled: true },
+    { title: 'Blue', value: '#0000ff' }
+  ],
+  initial: 1
+}
+```
+
+#### Options
+
+| Param    |    Type    | Description                                                                                                                                                             |
+| -------- | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| message  |  `string`  | Prompt message to display                                                                                                                                               |
+| initial  |  `number`  | Index of default value                                                                                                                                                  |
+| format   | `function` | Receive user input. The returned value will be added to the response object                                                                                             |
+| hint     |  `string`  | Hint to display to the user                                                                                                                                             |
+| warn     |  `string`  | Message to display when selecting a disabled option                                                                                                                     |
+| choices  |  `Array`   | Array of strings or choices objects `[{ title, description, value, disabled }, ...]`. The choice's index in the array will be used as its value if it is not specified. |
+| onRender | `function` | On render callback. Keyword `this` refers to the current prompt                                                                                                         |
+| onState  | `function` | On state change callback. Function signature is an `object` with two properties: `value` and `aborted`                                                                  |
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### multiselect(message, choices, [initial], [max], [hint], [warn]) {#multiselectmessage-choices-initial-max-hint-warn}
+
+### autocompleteMultiselect(same)
+
+> Interactive multi-select prompt.
+> Autocomplete is a searchable multiselect prompt with the same options. Useful for long lists.
+
+Use <kbd>space</kbd> to toggle select/unselect and <kbd>up</kbd>/<kbd>down</kbd> to navigate. Use <kbd>tab</kbd> to cycle the list. You can also use <kbd>right</kbd> to select and <kbd>left</kbd> to deselect.
+By default this prompt returns an `array` containing the **values** of the selected items - not their display title.
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/multiselect.gif" alt="multiselect prompt" width="499" height="130" />
+
+```js
+{
+  type: 'multiselect',
+  name: 'value',
+  message: 'Pick colors',
+  choices: [
+    { title: 'Red', value: '#ff0000' },
+    { title: 'Green', value: '#00ff00', disabled: true },
+    { title: 'Blue', value: '#0000ff', selected: true }
+  ],
+  max: 2,
+  hint: '- Space to select. Return to submit'
+}
+```
+
+#### Options
+
+| Param          |         Type          | Description                                                                                                                                                |
+| -------------- | :-------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| message        |       `string`        | Prompt message to display                                                                                                                                  |
+| format         |      `function`       | Receive user input. The returned value will be added to the response object                                                                                |
+| instructions   | `string` or `boolean` | Prompt instructions to display                                                                                                                             |
+| choices        |        `Array`        | Array of strings or choices objects `[{ title, value, disabled }, ...]`. The choice's index in the array will be used as its value if it is not specified. |
+| optionsPerPage |       `number`        | Number of options displayed per page (default: 10)                                                                                                         |
+| min            |       `number`        | Min select - will display error                                                                                                                            |
+| max            |       `number`        | Max select                                                                                                                                                 |
+| hint           |       `string`        | Hint to display to the user                                                                                                                                |
+| warn           |       `string`        | Message to display when selecting a disabled option                                                                                                        |
+| onRender       |      `function`       | On render callback. Keyword `this` refers to the current prompt                                                                                            |
+| onState        |      `function`       | On state change callback. Function signature is an `object` with two properties: `value` and `aborted`                                                     |
+
+This is one of the few prompts that don't take a initial value.
+If you want to predefine selected values, give the choice object an `selected` property of `true`.
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### autocomplete(message, choices, [initial], [suggest], [limit], [style]) {#autocompletemessage-choices-initial-suggest-limit-style}
+
+> Interactive auto complete prompt.
+
+The prompt will list options based on user input. Type to filter the list.
+Use <kbd>⇧</kbd>/<kbd>⇩</kbd> to navigate. Use <kbd>tab</kbd> to cycle the result. Use <kbd>Page Up</kbd>/<kbd>Page Down</kbd> (on Mac: <kbd>fn</kbd> + <kbd>⇧</kbd> / <kbd>⇩</kbd>) to change page. Hit <kbd>enter</kbd> to select the highlighted item below the prompt.
+
+The default suggests function is sorting based on the `title` property of the choices.
+You can overwrite how choices are being filtered by passing your own suggest function.
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/autocomplete.gif" alt="auto complete prompt" width="499" height="163" />
+
+```js
+{
+  type: 'autocomplete',
+  name: 'value',
+  message: 'Pick your favorite actor',
+  choices: [
+    { title: 'Cage' },
+    { title: 'Clooney', value: 'silver-fox' },
+    { title: 'Gyllenhaal' },
+    { title: 'Gibson' },
+    { title: 'Grant' }
+  ]
+}
+```
+
+#### Options
+
+| Param      |        Type        | Description                                                                                                                       |
+| ---------- | :----------------: | --------------------------------------------------------------------------------------------------------------------------------- |
+| message    |      `string`      | Prompt message to display                                                                                                         |
+| format     |     `function`     | Receive user input. The returned value will be added to the response object                                                       |
+| choices    |      `Array`       | Array of auto-complete choices objects `[{ title, value }, ...]`                                                                  |
+| suggest    |     `function`     | Filter function. Defaults to sort by `title` property. `suggest` should always return a promise. Filters using `title` by default |
+| limit      |      `number`      | Max number of results to show. Defaults to `10`                                                                                   |
+| style      |      `string`      | Render style (`default`, `password`, `invisible`, `emoji`). Defaults to `'default'`                                               |
+| initial    | `string \| number` | Default initial value                                                                                                             |
+| clearFirst |     `boolean`      | The first ESCAPE keypress will clear the input                                                                                    |
+| fallback   |      `string`      | Fallback message when no match is found. Defaults to `initial` value if provided                                                  |
+| onRender   |     `function`     | On render callback. Keyword `this` refers to the current prompt                                                                   |
+| onState    |     `function`     | On state change callback. Function signature is an `object` with three properties: `value`, `aborted` and `exited`                |
+
+Example on what a `suggest` function might look like:
+
+```js
+const suggestByTitle = (input, choices) =>
+  Promise.resolve(
+    choices.filter((i) => i.title.slice(0, input.length) === input),
+  );
+```
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+### date(message, [initial], [warn]) {#datemessage-initial-warn}
+
+> Interactive date prompt.
+
+Use <kbd>left</kbd>/<kbd>right</kbd>/<kbd>tab</kbd> to navigate. Use <kbd>up</kbd>/<kbd>down</kbd> to change date.
+
+#### Example
+
+<img src="https://github.com/terkelg/prompts/raw/master/media/date.gif" alt="date prompt" width="499" height="103" />
+
+```js
+{
+  type: 'date',
+  name: 'value',
+  message: 'Pick a date',
+  initial: new Date(1997, 09, 12),
+  validate: date => date > Date.now() ? 'Not in the future' : true
+}
+```
+
+#### Options
+
+| Param    |    Type    | Description                                                                                                                                                       |
+| -------- | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| message  |  `string`  | Prompt message to display                                                                                                                                         |
+| initial  |   `date`   | Default date                                                                                                                                                      |
+| locales  |  `object`  | Use to define custom locales. See below for an example.                                                                                                           |
+| mask     |  `string`  | The format mask of the date. See below for more information.<br />Default: `YYYY-MM-DD HH:mm:ss`                                                                  |
+| validate | `function` | Receive user input. Should return `true` if the value is valid, and an error message `String` otherwise. If `false` is returned, a default error message is shown |
+| onRender | `function` | On render callback. Keyword `this` refers to the current prompt                                                                                                   |
+| onState  | `function` | On state change callback. Function signature is an `object` with two properties: `value` and `aborted`                                                            |
+
+Default locales:
+
+```javascript
+{
+  months: [
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ],
+  monthsShort: [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ],
+  weekdays: [
+    'Sunday', 'Monday', 'Tuesday', 'Wednesday',
+    'Thursday', 'Friday', 'Saturday'
+  ],
+  weekdaysShort: [
+    'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
+  ]
+}
+```
+
+> **Formatting**: See full list of formatting options in the [wiki](https://github.com/terkelg/prompts/wiki/Date-Time-Formatting)
+
+![split](./split.png)
+
+**↑ back to:** [Prompt types](#-types)
+
+---
+
+## ❯ 许可证 {#license}
+
+MIT © [Terkel Gjervig](https://terkel.com)
