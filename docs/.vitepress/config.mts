@@ -9,7 +9,7 @@ export default defineConfig({
   description:
     "一个静态技术笔记网站，专注于您需要的技术 - A static technology note site that focuses on the technology you need",
   cleanUrls: true,
-  head: [["link", { rel: "icon", href: "/food_3.svg" }]],
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -117,7 +117,7 @@ export default defineConfig({
 
     siteTitle: "Technical notes",
 
-    logo: "/food_3.svg",
+    logo: "/favicon.ico",
 
     footer: {
       message: "Released under the MIT License.",

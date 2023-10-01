@@ -7,7 +7,7 @@ hero:
   text: "艺术来源于生活"
   tagline: 只为自己所写的笔记，岁月静好，努力奋斗💪
   image:
-    src: /food_3.svg
+    src: /study.svg
     alt: logo
   actions:
     - theme: brand
