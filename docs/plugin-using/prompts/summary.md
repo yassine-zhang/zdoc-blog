@@ -599,9 +599,9 @@ Type: `Stream`
 
 ### select(message, choices, [initial], [hint], [warn]) {#selectmessage-choices-initial-hint-warn}
 
-> Interactive select prompt.
+> 交互式选项提问。
 
-Use <kbd>up</kbd>/<kbd>down</kbd> to navigate. Use <kbd>tab</kbd> to cycle the list.
+使用 <kbd>up</kbd>/<kbd>down</kbd> 进行导航，使用 <kbd>tab</kbd> 循环列表。
 
 #### Example
 
@@ -623,16 +623,11 @@ Use <kbd>up</kbd>/<kbd>down</kbd> to navigate. Use <kbd>tab</kbd> to cycle the l
 
 #### Options
 
-| Param    |    Type    | Description                                                                                                                                                             |
-| -------- | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| message  |  `string`  | Prompt message to display                                                                                                                                               |
-| initial  |  `number`  | Index of default value                                                                                                                                                  |
-| format   | `function` | Receive user input. The returned value will be added to the response object                                                                                             |
-| hint     |  `string`  | Hint to display to the user                                                                                                                                             |
-| warn     |  `string`  | Message to display when selecting a disabled option                                                                                                                     |
-| choices  |  `Array`   | Array of strings or choices objects `[{ title, description, value, disabled }, ...]`. The choice's index in the array will be used as its value if it is not specified. |
-| onRender | `function` | On render callback. Keyword `this` refers to the current prompt                                                                                                         |
-| onState  | `function` | On state change callback. Function signature is an `object` with two properties: `value` and `aborted`                                                                  |
+| Param   |   Type   | Description                                                                                                             |
+| ------- | :------: | ----------------------------------------------------------------------------------------------------------------------- |
+| hint    | `string` | 为用户显示一些提示信息                                                                                                  |
+| warn    | `string` | 当单独选中选项被禁用时，为用户显示的一些警告信息                                                                        |
+| choices | `Array`  | 字符串或choices对象数组 `[{ title, description, value, disabled }, ...]`， 如果未指定，将使用数组中选择项的索引为其值。 |
 
 **↑ back to:** [Prompt types](#-types)
 
@@ -642,11 +637,12 @@ Use <kbd>up</kbd>/<kbd>down</kbd> to navigate. Use <kbd>tab</kbd> to cycle the l
 
 ### autocompleteMultiselect(same)
 
-> Interactive multi-select prompt.
-> Autocomplete is a searchable multiselect prompt with the same options. Useful for long lists.
+> 交互式多选提问。
 
-Use <kbd>space</kbd> to toggle select/unselect and <kbd>up</kbd>/<kbd>down</kbd> to navigate. Use <kbd>tab</kbd> to cycle the list. You can also use <kbd>right</kbd> to select and <kbd>left</kbd> to deselect.
-By default this prompt returns an `array` containing the **values** of the selected items - not their display title.
+> 自动搜索是一个可搜索的多选项提问，具有相同的选项。对于长列表很有用。
+
+使用 <kbd>space</kbd> to toggle select/unselect and <kbd>up</kbd>/<kbd>down</kbd> 进行导航，使用 <kbd>tab</kbd> 循环列表。你也能使用 <kbd>right</kbd> 来选择， <kbd>left</kbd> 来取消选择。
+默认情况下这种提问返回一个包含选择物品的`array`，而不是只包含选择物品的标题（title）。
 
 #### Example
 
@@ -669,22 +665,19 @@ By default this prompt returns an `array` containing the **values** of the selec
 
 #### Options
 
-| Param          |         Type          | Description                                                                                                                                                |
-| -------------- | :-------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| message        |       `string`        | Prompt message to display                                                                                                                                  |
-| format         |      `function`       | Receive user input. The returned value will be added to the response object                                                                                |
-| instructions   | `string` or `boolean` | Prompt instructions to display                                                                                                                             |
-| choices        |        `Array`        | Array of strings or choices objects `[{ title, value, disabled }, ...]`. The choice's index in the array will be used as its value if it is not specified. |
-| optionsPerPage |       `number`        | Number of options displayed per page (default: 10)                                                                                                         |
-| min            |       `number`        | Min select - will display error                                                                                                                            |
-| max            |       `number`        | Max select                                                                                                                                                 |
-| hint           |       `string`        | Hint to display to the user                                                                                                                                |
-| warn           |       `string`        | Message to display when selecting a disabled option                                                                                                        |
-| onRender       |      `function`       | On render callback. Keyword `this` refers to the current prompt                                                                                            |
-| onState        |      `function`       | On state change callback. Function signature is an `object` with two properties: `value` and `aborted`                                                     |
+| Param          |         Type          | Description                                                                                                             |
+| -------------- | :-------------------: | ----------------------------------------------------------------------------------------------------------------------- |
+| instructions   | `string` or `boolean` | 显示提问介绍。                                                                                                          |
+| choices        |        `Array`        | 字符串或choices对象数组 `[{ title, description, value, disabled }, ...]`， 如果未指定，将使用数组中选择项的索引为其值。 |
+| optionsPerPage |       `number`        | 每页显示的选项数量（默认为10）                                                                                          |
+| min            |       `number`        | 最小的选择数量，为负数时将显示错误。                                                                                    |
+| max            |       `number`        | 最大的选择数量。                                                                                                        |
+| hint           |       `string`        | 为用户显示一些提示信息                                                                                                  |
+| warn           |       `string`        | 当单独选中选项被禁用时，为用户显示的一些警告信息                                                                        |
 
-This is one of the few prompts that don't take a initial value.
-If you want to predefine selected values, give the choice object an `selected` property of `true`.
+这是少数不接受初始值（initial）的提问之一。
+
+如果你想要预定义选中的值，需要给选择对象一个`selected`属性为`true`即可。
 
 **↑ back to:** [Prompt types](#-types)
 
@@ -692,13 +685,13 @@ If you want to predefine selected values, give the choice object an `selected` p
 
 ### autocomplete(message, choices, [initial], [suggest], [limit], [style]) {#autocompletemessage-choices-initial-suggest-limit-style}
 
-> Interactive auto complete prompt.
+> 交互式自动完成提问。
 
-The prompt will list options based on user input. Type to filter the list.
-Use <kbd>⇧</kbd>/<kbd>⇩</kbd> to navigate. Use <kbd>tab</kbd> to cycle the result. Use <kbd>Page Up</kbd>/<kbd>Page Down</kbd> (on Mac: <kbd>fn</kbd> + <kbd>⇧</kbd> / <kbd>⇩</kbd>) to change page. Hit <kbd>enter</kbd> to select the highlighted item below the prompt.
+此提问将基于用户输入显示列表选项，键入以筛选列表。
+使用 <kbd>⇧</kbd>/<kbd>⇩</kbd> 进行导航，使用 <kbd>tab</kbd> 循环结果。使用 <kbd>Page Up</kbd>/<kbd>Page Down</kbd> (on Mac: <kbd>fn</kbd> + <kbd>⇧</kbd> / <kbd>⇩</kbd>)来切换页面（只有当页面不够显示所有选项时才会分出多个页面）。敲击 <kbd>enter</kbd> 显示提问下面凸出高亮显示的选项。
 
-The default suggests function is sorting based on the `title` property of the choices.
-You can overwrite how choices are being filtered by passing your own suggest function.
+默认用户输入后下方选项排序算法的函数（`suggest`）是根据其choices中的`title`来排列。
+你可以通过自己的算法函数来覆盖筛选选项的方式。
 
 #### Example
 
@@ -721,21 +714,15 @@ You can overwrite how choices are being filtered by passing your own suggest fun
 
 #### Options
 
-| Param      |        Type        | Description                                                                                                                       |
-| ---------- | :----------------: | --------------------------------------------------------------------------------------------------------------------------------- |
-| message    |      `string`      | Prompt message to display                                                                                                         |
-| format     |     `function`     | Receive user input. The returned value will be added to the response object                                                       |
-| choices    |      `Array`       | Array of auto-complete choices objects `[{ title, value }, ...]`                                                                  |
-| suggest    |     `function`     | Filter function. Defaults to sort by `title` property. `suggest` should always return a promise. Filters using `title` by default |
-| limit      |      `number`      | Max number of results to show. Defaults to `10`                                                                                   |
-| style      |      `string`      | Render style (`default`, `password`, `invisible`, `emoji`). Defaults to `'default'`                                               |
-| initial    | `string \| number` | Default initial value                                                                                                             |
-| clearFirst |     `boolean`      | The first ESCAPE keypress will clear the input                                                                                    |
-| fallback   |      `string`      | Fallback message when no match is found. Defaults to `initial` value if provided                                                  |
-| onRender   |     `function`     | On render callback. Keyword `this` refers to the current prompt                                                                   |
-| onState    |     `function`     | On state change callback. Function signature is an `object` with three properties: `value`, `aborted` and `exited`                |
+| Param      |    Type    | Description                                                             |
+| ---------- | :--------: | ----------------------------------------------------------------------- |
+| choices    |  `Array`   | 自动完成类型的提问choices对象数组： `[{ title, value }, ...]`           |
+| suggest    | `function` | 过滤函数，默认通过`title`属性进行排序。 `suggest` 应该总是返回promise。 |
+| limit      |  `number`  | 最大显示选项的数量，默认为`10`                                          |
+| clearFirst | `boolean`  | 键盘上第一个ESCape键将清楚用户输入                                      |
+| fallback   |  `string`  | 未找到匹配项时的回退消息。 如果提供，默认为`initial`提供的值            |
 
-Example on what a `suggest` function might look like:
+排序算法函数（`suggest`）可能看起来像这个样子：
 
 ```js
 const suggestByTitle = (input, choices) =>
@@ -750,9 +737,9 @@ const suggestByTitle = (input, choices) =>
 
 ### date(message, [initial], [warn]) {#datemessage-initial-warn}
 
-> Interactive date prompt.
+> 交互式日期提问。
 
-Use <kbd>left</kbd>/<kbd>right</kbd>/<kbd>tab</kbd> to navigate. Use <kbd>up</kbd>/<kbd>down</kbd> to change date.
+使用 <kbd>left</kbd>/<kbd>right</kbd>/<kbd>tab</kbd> 进行导航，使用 <kbd>up</kbd>/<kbd>down</kbd> 更改日期。
 
 #### Example
 
@@ -770,17 +757,12 @@ Use <kbd>left</kbd>/<kbd>right</kbd>/<kbd>tab</kbd> to navigate. Use <kbd>up</kb
 
 #### Options
 
-| Param    |    Type    | Description                                                                                                                                                       |
-| -------- | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| message  |  `string`  | Prompt message to display                                                                                                                                         |
-| initial  |   `date`   | Default date                                                                                                                                                      |
-| locales  |  `object`  | Use to define custom locales. See below for an example.                                                                                                           |
-| mask     |  `string`  | The format mask of the date. See below for more information.<br />Default: `YYYY-MM-DD HH:mm:ss`                                                                  |
-| validate | `function` | Receive user input. Should return `true` if the value is valid, and an error message `String` otherwise. If `false` is returned, a default error message is shown |
-| onRender | `function` | On render callback. Keyword `this` refers to the current prompt                                                                                                   |
-| onState  | `function` | On state change callback. Function signature is an `object` with two properties: `value` and `aborted`                                                            |
+| Param   |   Type   | Description                                                                                      |
+| ------- | :------: | ------------------------------------------------------------------------------------------------ |
+| locales | `object` | 用于定义自定义区域设置，请看以下案例。                                                           |
+| mask    | `string` | The format mask of the date. See below for more information.<br />Default: `YYYY-MM-DD HH:mm:ss` |
 
-Default locales:
+默认区域设置:
 
 ```javascript
 {
@@ -803,7 +785,7 @@ Default locales:
 }
 ```
 
-> **Formatting**: See full list of formatting options in the [wiki](https://github.com/terkelg/prompts/wiki/Date-Time-Formatting)
+> **格式化**: 请看完整的格式化列表[wiki](https://github.com/terkelg/prompts/wiki/Date-Time-Formatting)
 
 ![split](./split.png)
 
@@ -811,6 +793,6 @@ Default locales:
 
 ---
 
-## ❯ 许可证 {#license}
+## ❯ 许可证 {#-license}
 
 MIT © [Terkel Gjervig](https://terkel.com)
