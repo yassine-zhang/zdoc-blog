@@ -120,3 +120,54 @@ await esbuild.build({
 ```
 
 ## 在node构建 {#bounding-node}
+
+&nbsp;&nbsp;尽管在使用node时不需要打包工具，但有时在node中运行代码之前使用esbuild处理代码仍然有益。捆绑可以自动剥离TypeScript类型，将ECMAScript模块语法转换为CommonJS，并将较新的JavaScript语法转换为特定版本节点的旧语法。
+
+&nbsp;&nbsp;如果要打包将要在`node`中运行的代码，则应通过传递`--platform=node`给esbuild来配置平台设置。
+
+> 这会同时将几个不同的设置更改为节点推荐的默认值。例如所有内置到node的包（例如fs）都会自动标记为外部，因此esbuild不会尝试打包它们。此设置还会禁用对`package.json`中浏览器字段的解释。
+
+如果您的代码中使用了在您node版本不起作用的较新JavaScript语法，则需要配置节点的目标版本：
+
+```js
+import * as esbuild from "esbuild";
+
+await esbuild.build({
+  entryPoints: ["app.js"],
+  bundle: true,
+  platform: "node",
+  target: ["node10.4"],
+  outfile: "out.js",
+});
+```
+
+&nbsp;&nbsp;您也可能不希望将依赖项与 esbuild 打包在一起。esbuild 在打包时不支持许多特定于node的功能，例如 `__dirname` 、 `import.meta.url` 、 `fs.readFileSync` 和 `*.node` 本机二进制模块。您可以通过将包设置为外部包来从捆绑包中排除所有依赖项：
+
+```js
+require("esbuild").buildSync({
+  entryPoints: ["app.jsx"],
+  bundle: true,
+  platform: "node",
+  packages: "external",
+  outfile: "out.js",
+});
+```
+
+<font color="#FF6666">如果执行此操作，则依赖项在运行时必须仍存在于文件系统上，因为它们不再包含在捆绑包中。</font>
+
+## 案例
+
+```js
+import * as esbuild from "esbuild";
+
+await esbuild.build({
+  bundle: true,
+  entryPoints: ["index.ts"],
+  outfile: "outfile.cjs",
+  format: "cjs",
+  platform: "node",
+  target: "node14",
+
+  plugins: [...plugins],
+});
+```
