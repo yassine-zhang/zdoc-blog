@@ -22,7 +22,7 @@ npm create vue@latest
 
 它会执行 npm 包管理器中的 `create-vue` 包。`npx` 是 npm 5.2.0 版本引入的工具，用于直接执行项目依赖中的可执行文件。
 
-<font color="#f2d478"><b>当你运行 `npx create-vue@latest` 命令时，npm 会下载并执行 `create-vue` 包中的可执行文件</b></font>，该文件负责创建一个新的 Vue.js 项目。`create-vue` 是一个官方提供的用于快速创建 Vue.js 项目的工具包。
+<font color="#FF6666"><b>当你运行 `npx create-vue@latest` 命令时，npm 会下载并执行 `create-vue` 包中的可执行文件</b></font>，该文件负责创建一个新的 Vue.js 项目。`create-vue` 是一个官方提供的用于快速创建 Vue.js 项目的工具包。
 
 ## project directory
 
