@@ -104,6 +104,10 @@ export default defineConfig({
             text: "交互式提示/prompts",
             link: "/plugin-using/prompts/summary"
           },
+          {
+            text: "更快的前端构建工具/esbuild",
+            link: "/plugin-using/esbuild/summary"
+          },
         ],
       },
     ],
