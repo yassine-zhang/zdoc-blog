@@ -108,6 +108,10 @@ export default defineConfig({
             text: "更快的前端构建工具/esbuild",
             link: "/plugin-using/esbuild/summary"
           },
+          {
+            text: "esbuild插件-许可证/license",
+            link: "/plugin-using/esbuild-plugin-license/summary"
+          },
         ],
       },
     ],
