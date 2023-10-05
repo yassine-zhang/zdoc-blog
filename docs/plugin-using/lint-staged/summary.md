@@ -25,6 +25,12 @@ $ git commit
 
 ![Alt text](image.png)
 
+## step1: install lint-staged of npm
+
+```shell
+npm install --save-dev lint-staged
+```
+
 ## step2: 需要注册`git`钩子去运行`lint-staged`
 
 推荐我们使用`husky`，那我们就用它，
