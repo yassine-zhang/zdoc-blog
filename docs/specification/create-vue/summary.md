@@ -16,6 +16,10 @@ npm create vue@latest
   <img src="./screenshot-cli.png" width="800">
 </p>
 
+---
+
+[[TOC]]
+
 ## npm create vue@latest
 
 ![Npm Init Synopsis](npm-init-synopsis.png)
@@ -66,12 +70,12 @@ npm create vue@latest
 
 关于文件分析具体内容请往下看
 
-- [.gitmodule](#.gitmodule)
+- [.gitmodules](#.gitmodules)
 - [.prettierignore](#.prettierignore)
 - [package.json](#package.json)
 - [tsconfig.json](#tsconfig.json)
 
-## xx.gitmodule {#.gitmodule}
+## xx.gitmodules {#.gitmodules}
 
 ```shell
 [submodule "playground"]
@@ -80,6 +84,9 @@ npm create vue@latest
 ```
 
 在上面文件中，可以看出定义了一个子模块名叫`playground，之后分别指定了path&url，非常简单的一个文件
+
+相关文献:
+- [使用子模块和子树来管理 Git 项目 | Linux 中国](https://zhuanlan.zhihu.com/p/143100657)
 
 ## xx.prettierignore {#.prettierignore}
 
