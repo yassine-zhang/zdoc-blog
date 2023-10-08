@@ -44,7 +44,7 @@
 ## ❯ 安装 {#-install}
 
 ```
-$ npm install --save prompts
+npm install --save prompts
 ```
 
 > 这个包支持Node 14及以上版本
