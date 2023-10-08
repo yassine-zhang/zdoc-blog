@@ -141,7 +141,7 @@ await esbuild.build({
 });
 ```
 
-&nbsp;&nbsp;您也可能不希望将依赖项与 esbuild 打包在一起。esbuild 在打包时不支持许多特定于node的功能，例如 `__dirname` 、 `import.meta.url` 、 `fs.readFileSync` 和 `*.node` 本机二进制模块。您可以通过将包设置为外部包来从捆绑包中排除所有依赖项：
+&nbsp;&nbsp;您也可能不希望将依赖项与 esbuild 打包在一起。~~esbuild 在打包时不支持许多特定于node的功能，例如 `__dirname` 、 `import.meta.url` 、 `fs.readFileSync` 和 `*.node` 本机二进制模块。~~ 您可以通过将包设置为外部包来从捆绑包中排除所有依赖项：
 
 ```js
 require("esbuild").buildSync({
@@ -154,6 +154,8 @@ require("esbuild").buildSync({
 ```
 
 <font color="#FF6666">如果执行此操作，则依赖项在运行时必须仍存在于文件系统上，因为它们不再包含在捆绑包中。</font>
+
+> esbuild主要用于打包浏览器JS代码，如果要在node端打包使用要时刻注意兼容问题。
 
 ## 案例
 
