@@ -1,9 +1,16 @@
 # minimist <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
-[![github actions][actions-image]][actions-url]
+<div style="display:flex; margin: 10px 0">
+    <a href="https://github.com/minimistjs/minimist/actions"><img src="https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/minimistjs/minimist" alt="github actions"></a>
+    <a style="margin-left: 4px;" href="https://app.codecov.io/gh/minimistjs/minimist/"><img src="https://codecov.io/gh/minimistjs/minimist/branch/main/graphs/badge.svg" alt="coverage"></a>
+    <a style="margin-left: 4px;" href="https://github.com/minimistjs/minimist/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/minimist.svg" alt="License"></a>
+    <a style="margin-left: 4px;" href="https://npm-stat.com/charts.html?package=minimist"><img src="https://img.shields.io/npm/dm/minimist.svg" alt="Downloads"></a>
+</div>
+
+<!-- [![github actions][actions-image]][actions-url]
 [![coverage][codecov-image]][codecov-url]
 [![License][license-image]][license-url]
-[![Downloads][downloads-image]][downloads-url]
+[![Downloads][downloads-image]][downloads-url] -->
 
 [![npm badge][npm-badge-png]][package-url]
 

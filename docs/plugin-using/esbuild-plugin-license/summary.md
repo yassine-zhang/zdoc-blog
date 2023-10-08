@@ -1,7 +1,12 @@
 # esbuild-plugin-license
 
-[![npm (tag)](https://img.shields.io/npm/v/esbuild-plugin-license/latest?style=flat-square)](https://www.npmjs.com/package/esbuild-plugin-license)
-![npm](https://img.shields.io/npm/dm/esbuild-plugin-license?style=flat-square)
+<div style="display:flex; margin: 10px 0">
+    <a href="https://www.npmjs.com/package/esbuild-plugin-license"><img src="https://img.shields.io/npm/v/esbuild-plugin-license/latest?style=flat-square" alt="npm (tag)"></a>
+    <a style="margin-left: 4px;"><img src="https://img.shields.io/npm/dm/esbuild-plugin-license?style=flat-square" alt="npm"></a>
+</div>
+
+<!-- [![npm (tag)](https://img.shields.io/npm/v/esbuild-plugin-license/latest?style=flat-square)](https://www.npmjs.com/package/esbuild-plugin-license)
+![npm](https://img.shields.io/npm/dm/esbuild-plugin-license?style=flat-square) -->
 
 ---
 

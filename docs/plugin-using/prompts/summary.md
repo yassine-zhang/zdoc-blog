@@ -4,14 +4,14 @@
 
 <h1 align="center">❯ Prompts</h1>
 
-<p align="center">
+<p style="display: flex; justify-content: center;">
   <a href="https://npmjs.org/package/prompts">
     <img src="https://img.shields.io/npm/v/prompts.svg" alt="version" />
   </a>
-  <a href="https://github.com/terkelg/prompts/actions/workflows/test.yml">
+  <a style="margin-left: 4px;" href="https://github.com/terkelg/prompts/actions/workflows/test.yml">
     <img src="https://github.com/terkelg/prompts/actions/workflows/test.yml/badge.svg" alt="test" />
   </a>
-  <a href="https://npmjs.org/package/prompts">
+  <a style="margin-left: 4px;" href="https://npmjs.org/package/prompts">
     <img src="https://img.shields.io/npm/dm/prompts.svg" alt="downloads" />
   </a>
   <!---
