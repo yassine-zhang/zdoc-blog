@@ -112,6 +112,10 @@ export default defineConfig({
             text: "esbuild插件-许可证/license",
             link: "/plugin-using/esbuild-plugin-license/summary"
           },
+          {
+            text: "控制台渐变/gradient-string",
+            link: "/plugin-using/gradient-string/summary"
+          },
         ],
       },
     ],
