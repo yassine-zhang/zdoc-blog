@@ -1,6 +1,22 @@
 # zx - 面向前端的Shell编程利器
 
-### Shell 简介
+[[TOC]]
+
+## 安装
+
+```shell
+npm install zx
+```
+
+## 导包
+
+所有函数($，cd, fetch等)都可以直接使用，无需任何导入。或者显式导入全局变量（以便在 VS Code 中更好地自动完成）。
+
+```js
+import "zx/globals";
+```
+
+## Shell 简介
 
 Shell，或者说命令行，对于处理工作中遇到的重复性工作有极大的帮助。
 
@@ -69,11 +85,21 @@ chmod a+x test.mjs  # 加权限 （仅类 Unix 系统，如 Linux / MacOS 等）
 # 第二种方式需要在文件头部有 #!/usr/bin/env zx 这一行(shbang)，第一种方式不需要
 ```
 
+### $函数运行机制
+
+它的每一行语句在运行时都会单独开辟新的 Shell 进程。
+
+<font color="#FF6666">常见问题：</font>
+
+尽管zx包中$可以正常执行shell的cd命令，但实际上只是shell子进程受到影响。
+
+使用 Node.js 内置的 process.chdir() 方法会直接改变进程的工作目录，而不像在 Shell 中使用 cd 命令一样只是改变 Shell 进程的工作目录。因此，在调用该方法之前请确保你已经了解了其可能产生的影响。
+
 ### 内置函数
 
 zx 提供的不仅仅是一个 `$` 函数，它还提供了一些其它在脚本编程中常用的工具函数。
 
-- `cd()` 切换当前目录
+- `cd()` 切换当前目录（它非常有用，相比使用$来切换目录）
 - `fetch()` 内置的 [node-fetch](https://www.npmjs.com/package/node-fetch) 包，用于网络请求
 - `question()` 内置的 [readline](https://nodejs.org/api/readline.html) 包，用于读取用户输入，询问用户选项等
 - `sleep()` 使用 setTimeout 实现的一个等待函数
@@ -81,7 +107,7 @@ zx 提供的不仅仅是一个 `$` 函数，它还提供了一些其它在脚本
 
 ### 内置的全局变量
 
-zx 还内置了一些 package 的引用，并做了成全局变量。
+zx包中可以直接使用Node.js中的全局对象和模块，它还内置了一些 package 的引用，并做了成全局变量。
 
 - `chalk` 即 [chalk](https://www.npmjs.com/package/chalk) 包，用于输出彩色的内容。
 - `fs` 引用的 [fs-extra](https://www.npmjs.com/package/fs-extra) 包，用于完成常见的文件操作。
