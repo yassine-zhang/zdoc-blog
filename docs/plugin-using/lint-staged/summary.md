@@ -21,6 +21,10 @@ $ git commit
 ◼ Cleaning up temporary files...
 ```
 
+---
+
+[[TOC]]
+
 ## 如何安装和配置？
 
 ![Alt text](image.png)
@@ -76,8 +80,17 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 . "$(dirname "$0")/_/husky.sh"  // [!code ++]
 
 npm test    // [!code --]
-npx lint-staged // [!code ++]
-git add ./  // [!code ++]
+npx lint-staged  // [!code ++]
+
+# Get the list of files to be committed
+files=$(git diff --cached --name-only --diff-filter=ACM | tr '\n' ' ')
+
+# Add the previously added file again
+git add $files
+
+# Allow the commit to proceed
+exit 0
+
 ```
 
 ::: warning
@@ -91,7 +104,7 @@ git add ./  // [!code ++]
 - `/usr/bin/env` 是一个命令，用于在执行环境的 $PATH 搜索路径中查找并运行指定的程序。
   :::
 
-上面执行`npx lint-staged`后又执行了`git add ./`的原因是因为后面会触发lint-staged中配置的条件，调用linter的格式化功能。
+&nbsp;&nbsp;上面执行`npx lint-staged`后又获取到这次被add的文件列表，然后再次add这些暂存区文件的原因是因为后面会触发lint-staged中配置的条件，调用linter（prettier）的格式化功能。
 
 因此会将文件重新写入，而这时重新写入的文件仍然处于Modify的状态，所以要将其添加到暂存区
 
@@ -121,7 +134,7 @@ chmod +x .husky/pre-commit
 ```json
 {
   "lint-staged": {
-    "*.{js,md,ts,vue,json}": ["prettier --write"]
+    "*.{js,cjs,mjs,md,ts,vue,json,css}": ["prettier --write"]
   }
 }
 ```
@@ -130,7 +143,7 @@ chmod +x .husky/pre-commit
 
 ```
 {
-  "*.{js,md,ts,vue,json}": [
+  "*.{js,cjs,mjs,md,ts,vue,json,css}": [
     "prettier --write"
   ]
 }
