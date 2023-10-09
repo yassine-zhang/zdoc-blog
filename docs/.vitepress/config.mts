@@ -31,6 +31,12 @@ export default defineConfig({
         ],
       },
       {
+        text: "通用工具",
+        items: [
+          { text: "Git速查表", link: "/common-tools/cheat-sheet/git" }
+        ]
+      },
+      {
         text: "Repo 使用",
         link: "/plugin-using/lint-staged/summary",
       },
@@ -42,27 +48,37 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "JavaScript",
+        text: "安全指南",
         items: [
-          { text: "Trusted Event", link: "/js/trusted-event" },
-          { text: "XSS 非法注入", link: "/js/xss" },
-        ],
+          {
+            text: "JavaScript",
+            items: [
+              { text: "Trusted Event", link: "/js/trusted-event" },
+              { text: "XSS 非法注入", link: "/js/xss" },
+            ],
+          }
+        ]
       },
       {
-        text: "docker",
+        text: "后端",
         items: [
-          { text: "运行环境信息", link: "/docker/inspect" },
           {
-            text: "入门到实践",
+            text: "docker",
             items: [
-              { text: "1.构建Docker镜像", link: "/docker/buildx-image" },
-              { text: "2.推送镜像到Hub", link: "/docker/push-hub" },
-              { text: "3.多容器组合使用", link: "/docker/compose" },
+              { text: "运行环境信息", link: "/docker/inspect" },
+              {
+                text: "入门到实践",
+                items: [
+                  { text: "1.构建Docker镜像", link: "/docker/buildx-image" },
+                  { text: "2.推送镜像到Hub", link: "/docker/push-hub" },
+                  { text: "3.多容器组合使用", link: "/docker/compose" },
+                ],
+              },
+              { text: "错误汇总", link: "/docker/error-summary" },
+              { text: "Docker中文文档", link: "/docker/ref-links" },
             ],
-          },
-          { text: "错误汇总", link: "/docker/error-summary" },
-          { text: "Docker中文文档", link: "/docker/ref-links" },
-        ],
+          }
+        ]
       },
       {
         text: "项目规范",
@@ -76,6 +92,20 @@ export default defineConfig({
             link: "/specification/create-vue/summary",
           },
         ],
+      },
+      {
+        text: "通用工具",
+        items: [
+          {
+            text: "速查表",
+            items: [
+              {
+                text: "Git",
+                link: "/common-tools/cheat-sheet/git"
+              }
+            ]
+          }
+        ]
       },
       {
         text: "Repo 使用",
