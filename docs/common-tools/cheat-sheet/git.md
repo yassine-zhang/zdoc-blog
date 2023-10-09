@@ -9,3 +9,4 @@
 | &nbsp;&nbsp;--hard 删除工作空间的代码，撤销commit且撤销add | git reset --hard HEAD^ |
 | 获取所有缓存区文件名（换行的形式） | git diff --cached --name-only --diff-filter=ACM |
 | 获取所有缓存区文件名（不换行，空格形式） | git diff --cached --name-only --diff-filter=ACM | tr '\n' ' ' |
+| 重命名文件夹（如果不使用git命令来重命名那么推送后远程仓库会继续保留原文件夹） | git mv <旧文件夹名> <新文件夹名> |
