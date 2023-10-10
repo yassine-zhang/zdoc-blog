@@ -120,6 +120,18 @@ exit 0
 chmod +x .husky/pre-commit
 ```
 
+---
+
+你可能会遇到git提交中文乱码情况：
+
+> 当git add 添加的文件有中文名称时再去提交会报错提示没有已经add的暂存文件去commit，原因是git内部做了转译，不止是中文其他非英文也会出现这种情况
+
+解决方案：更改 Git 配置
+
+- 运行下面的命令来更改 Git 的输出编码为 UTF-8：
+- git config --global core.quotepath false
+- 上述命令将禁止 Git 转义中文字符，以便正确显示文件名。
+
 ## step3: 安装linter --> `Prettier`
 
 <p><a href="../prettier/summary" target="_blank">点我查看Prettier格式化工具如何使用</a></p>
