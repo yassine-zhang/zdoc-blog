@@ -28,6 +28,7 @@ export default defineConfig({
         items: [
           { text: "fs-extra", link: "/specification/fs-extra/summary" },
           { text: "create-vue", link: "/specification/create-vue/summary" },
+          { text: "[language]", link: "/specification/language/alternate-if-syntax/summary" },
         ],
       },
       {
@@ -90,6 +91,12 @@ export default defineConfig({
           {
             text: "create-vue",
             link: "/specification/create-vue/summary",
+          },
+          {
+            text: "language",
+            items: [
+              { text: "替换if语法", link: "/specification/language/alternate-if-syntax/summary" }
+            ]
           },
         ],
       },
