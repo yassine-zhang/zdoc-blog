@@ -15,3 +15,20 @@
 | 右边这个错误提示表示在 refs/original/ 目录下已经存在一个以前的备份，而新的备份无法创建。可能是之前已经运行过类似的 git filter-branch 命令，并且备份文件还未被删除。解决问题请看下一条 | <span style="color:#e46b59;">Proceeding with filter-branch...<br><br>Cannot create a new backup.<br>A previous backup already exists in refs/original/</span> |
 | 为了解决这个问题，你可以尝试删除 refs/original/ 目录并重新运行 git filter-branch 命令。请注意，在删除目录之前，确保备份文件不再需要，确保当前没有未提交的更改，以免丢失工作。 | git update-ref -d refs/original/refs/heads/&#60;branch-name&#62;<br>git update-ref -d refs/original/refs/remotes/origin/&#60;branch-name&#62; |
 | 强制推送本地源码到远程仓库，origin：指定远程仓库标志，main：分区名称 | git push -f origin main |
+
+
+---
+
+[[TOC]]
+
+---
+
+## 科普
+
+### git rm 和 rm 直接区别
+
+&nbsp;&nbsp; `git rm` 命令用于从 Git 仓库中删除文件，并将删除操作记录在版本历史中，而 `rm` 命令用于直接从文件系统中删除文件，不涉及 Git 的操作。选择使用哪个命令取决于你希望删除操作是否被记录在 Git 中。
+
+需要注意的是，在使用 `git rm` 或 `rm` 命令删除文件之后，为了使删除生效，需要进行相应的提交操作（如 `git commit`）。
+
+<p style="color:#e46b59;">如今流行的IDE中关于删除文件，文件夹，如果您使用了git, svn等远程管理工具都会自动将操作记录在版本历史中。</p>
