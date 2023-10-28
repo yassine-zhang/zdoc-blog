@@ -33,7 +33,8 @@ export default defineConfig({
       {
         text: "通用工具",
         items: [
-          { text: "Git速查表", link: "/common-tools/cheat-sheet/git" }
+          { text: "Git速查表", link: "/common-tools/cheat-sheet/git" },
+          { text: "Docker速查表", link: "/common-tools/cheat-sheet/docker" },
         ]
       },
       {
@@ -108,7 +109,11 @@ export default defineConfig({
               {
                 text: "Git",
                 link: "/common-tools/cheat-sheet/git"
-              }
+              },
+              {
+                text: "Docker",
+                link: "/common-tools/cheat-sheet/docker"
+              },
             ]
           }
         ]
