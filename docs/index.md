@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: "Technical notes"
-  text: "艺术来源于生活"
-  tagline: 只为自己所写的笔记，坚持写，坚持阅读，努力奋斗💪
+  name: "ZDoc"
+  text: "赋予程序以生命"
+  tagline: ZDoc译为Zhang Documents，保持良好的心态书写独属于我的笔记💪
   image:
     src: strive.svg
     alt: logo
   actions:
     - theme: brand
-      text: Get Started
-      link: /js/trusted-event
+      text: + Follow Me(Bilibili)
+      link: https://space.bilibili.com/483711690?spm_id_from=333.1007.0.0
     - theme: alt
       text: About Me
       link: /about
@@ -20,12 +20,12 @@ hero:
 features:
   - title: JavaScript
     icon:
-      src: js.svg
+      src: ./language/js.svg
     details: JavaScript（通常缩写为JS）是一门基于原型和头等函数的多范式高级解释型编程语言，它支持面向对象程序设计、指令式编程和函数式编程。
     link: /js/trusted-event
   - title: Docker
     icon:
-      src: docker.svg
+      src: ./language/docker.svg
     details: Docker 是一个应用打包、分发、部署的工具。你也可以把它理解为一个轻量的虚拟机，它只虚拟你软件需要的运行环境，多余的一点都不要。
     link: /docker/inspect
   - title: 项目规范
