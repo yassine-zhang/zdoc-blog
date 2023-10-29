@@ -32,3 +32,8 @@
 | &nbsp;&nbsp;&#60;命令&#62; 是要在容器内部执行的命令。 | |
 | 例如，要进入名为 mycontainer 的容器，并在其中执行 /bin/bash 命令，可以执行以下命令： | docker exec -it mycontainer /bin/bash |
 | 这将在交互模式下进入容器，并启动一个新的 shell，使您可以在容器内部执行命令和操作。 | 请注意，在执行 docker exec 命令之前，请确保容器已经在运行状态，否则该命令将会失败。如果您需要在容器启动时就进入容器内部进行操作，可以使用 docker run 命令的 -it 参数来创建一个交互式容器。 |
+| ---------- | ---------- |
+| 文件双向拷贝（容器必须正在运行） | docker cp ... |
+| 从宿主机拷贝到容器内部（要将宿主机上的 file.txt 文件拷贝到名为 mycontainer 的容器的 /data 目录中） | docker cp file.txt mycontainer:/data |
+| 从容器内部拷贝到宿主机（要将名为 mycontainer 的容器中的 /app/log.txt 文件拷贝到宿主机的当前目录） | docker cp mycontainer:/app/log.txt . |
+
