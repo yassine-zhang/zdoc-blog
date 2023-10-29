@@ -38,6 +38,12 @@ export default defineConfig({
         ]
       },
       {
+        text: "大陆通行",
+        items: [
+          { text: "域名备案", link: "/mainland-pass/domain-name-filing/summary", },
+        ]
+      },
+      {
         text: "插件使用",
         link: "/plugin-using/lint-staged/summary",
       },
@@ -116,6 +122,12 @@ export default defineConfig({
               },
             ]
           }
+        ]
+      },
+      {
+        text: "大陆通行",
+        items: [
+          { text: "网站备案", link: "/mainland-pass/domain-name-filing/summary" },
         ]
       },
       {
