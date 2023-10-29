@@ -4,7 +4,7 @@ import fs from "fs";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh",
-  title: "ZDoc技术文档",
+  title: "ZDoc",
   description:
     "ZDoc译为Zhang Documents，保持良好的心态书写独属于我的笔记",
   cleanUrls: true,
@@ -38,7 +38,7 @@ export default defineConfig({
         ]
       },
       {
-        text: "Repo 使用",
+        text: "插件使用",
         link: "/plugin-using/lint-staged/summary",
       },
       {
@@ -119,10 +119,10 @@ export default defineConfig({
         ]
       },
       {
-        text: "Repo 使用",
+        text: "插件使用",
         items: [
           {
-            text: "防止提交屎/lint-staged",
+            text: "防止提交lj/lint-staged",
             link: "/plugin-using/lint-staged/summary",
           },
           {
@@ -150,12 +150,20 @@ export default defineConfig({
             link: "/plugin-using/esbuild/summary"
           },
           {
-            text: "esbuild插件-许可证/license",
+            text: "esbuild许可证插件",
             link: "/plugin-using/esbuild-plugin-license/summary"
           },
           {
             text: "控制台渐变/gradient-string",
             link: "/plugin-using/gradient-string/summary"
+          },
+          {
+            text: "Vite gzip压缩插件",
+            link: "https://www.npmjs.com/package/vite-plugin-compression2"
+          },
+          {
+            text: "Pinia持久化存储插件",
+            link: "https://seb-l.github.io/pinia-plugin-persist/"
           },
         ],
       },
