@@ -31,7 +31,7 @@ features:
   - title: 项目规范
     icon:
       src: normalize.svg
-    link: /specification/create-vue/summary
+    link: /specification/fs-extra/summary
     details: 学习不同框架开发者前辈们的编程项目规范，并提取核心点
   - title: 速查表
     icon:
@@ -41,7 +41,7 @@ features:
   - title: 大陆通行
     icon:
       src: mainland.svg
-    link: /mainland/domain-name-filing/summary
+    link: /mainland-pass/domain-name-filing/summary
     details: 想在中国内陆互联网畅通无阻就必须明白这几件事...
   - title: 插件使用
     icon:
