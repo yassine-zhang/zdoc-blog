@@ -33,9 +33,19 @@ features:
       src: normalize.svg
     link: /specification/create-vue/summary
     details: 学习不同框架开发者前辈们的编程项目规范，并提取核心点
-  - title: Repo 使用
+  - title: 速查表
     icon:
-      src: repository.svg
+      src: zoom-table.svg
+    link: /common-tools/cheat-sheet/git
+    details: Git,Docker命令语句速查表
+  - title: 大陆通行
+    icon:
+      src: mainland.svg
+    link: /mainland/domain-name-filing/summary
+    details: 想在中国内陆互联网畅通无阻就必须明白这几件事...
+  - title: 插件使用
+    icon:
+      src: plugin-use.svg
     link: /plugin-using/lint-staged/summary
-    details: Github各种有用Repo的使用简记
+    details: Github各种有用插件的使用简记
 ---
