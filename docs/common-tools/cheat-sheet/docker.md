@@ -26,14 +26,25 @@
 | ---------- | ---------- |
 | 查看容器的日志（例如：在运行 docker ps -a 命令时，看到名为 "my-nginx" 的容器状态为 "Exited"，通常表示容器已经启动但是又立即停止了。） | docker logs my-nginx |
 | ---------- | ---------- |
-| 进入正在运行的容器内部进行操作 | docker exec [选项] &#60;容器名或容器ID&#62; &#60;命令&#62; |
+| 进入正在运行的容器内部进行操作 - 语法 | docker exec [选项] &#60;容器名或容器ID&#62; &#60;命令&#62; |
 | &nbsp;&nbsp;[选项] 是可选的，可以用来指定一些参数，比如 -it 参数可以让命令在交互模式下运行。 |  |
 | &nbsp;&nbsp;&#60;容器名或容器ID&#62; 是要进入的容器的名称或 ID。 | |
 | &nbsp;&nbsp;&#60;命令&#62; 是要在容器内部执行的命令。 | |
 | 例如，要进入名为 mycontainer 的容器，并在其中执行 /bin/bash 命令，可以执行以下命令： | docker exec -it mycontainer /bin/bash |
 | 这将在交互模式下进入容器，并启动一个新的 shell，使您可以在容器内部执行命令和操作。 | 请注意，在执行 docker exec 命令之前，请确保容器已经在运行状态，否则该命令将会失败。如果您需要在容器启动时就进入容器内部进行操作，可以使用 docker run 命令的 -it 参数来创建一个交互式容器。 |
 | ---------- | ---------- |
-| 文件双向拷贝（容器必须正在运行） | docker cp ... |
+| 文件双向拷贝（容器必须正在运行） - 语法 | docker cp ... |
 | 从宿主机拷贝到容器内部（要将宿主机上的 file.txt 文件拷贝到名为 mycontainer 的容器的 /data 目录中） | docker cp file.txt mycontainer:/data |
 | 从容器内部拷贝到宿主机（要将名为 mycontainer 的容器中的 /app/log.txt 文件拷贝到宿主机的当前目录） | docker cp mycontainer:/app/log.txt . |
+| ---------- | ---------- |
+| 镜像添加标签 - 语法 | docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG] |
+| 给镜像添加标签 | docker tag my_image my_repository/my_image:my_tag |
+| 给镜像重新添加默认 latest 标签(这将为名为 my_image 的本地镜像添加一个名为 latest 的标签，并将其更名为 `my_repository/my_image:latest`) | docker tag my_image my_repository/my_image |
+| 为已有标签添加新的名称(这将创建一个新的标签 my_new_tag，并将其与已有的 `my_repository/my_image:my_tag` 镜像关联起来。) | docker tag my_repository/my_image:my_tag my_repository/my_image:my_new_tag |
+| 添加标签的疑惑问题：为镜添加新标签后会多出一个镜像，那么删除原镜像后新镜像能否正常使用 | 镜像之间是相互独立的，删除原镜像不影响新镜像使用 |
 
+
+## 参考文献 {#reference}
+[Docker快速入门](https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP)
+
+[Docker - 从入门到实践](https://yeasy.gitbook.io/docker_practice/)
