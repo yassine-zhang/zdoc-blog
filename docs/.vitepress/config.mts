@@ -35,6 +35,7 @@ export default defineConfig({
         items: [
           { text: "Git速查表", link: "/common-tools/cheat-sheet/git" },
           { text: "Docker速查表", link: "/common-tools/cheat-sheet/docker" },
+          { text: "Centos速查表", link: "/common-tools/cheat-sheet/centos" },
         ]
       },
       {
@@ -120,6 +121,10 @@ export default defineConfig({
               {
                 text: "Docker",
                 link: "/common-tools/cheat-sheet/docker"
+              },
+              { 
+                text: "Centos", 
+                link: "/common-tools/cheat-sheet/centos" 
               },
             ]
           }
