@@ -178,7 +178,7 @@ export default defineConfig({
           },
           {
             text: "Vite gzip压缩插件",
-            link: "https://www.npmjs.com/package/vite-plugin-compression2"
+            link: "/plugin-using/vite-plugin-compression2/summary"
           },
           {
             text: "Pinia持久化存储插件",
