@@ -18,16 +18,11 @@ hero:
       link: /about
 
 features:
-  - title: JavaScript
+  - title: 安全指南
     icon:
-      src: ./language/js.svg
-    details: JavaScript（通常缩写为JS）是一门基于原型和头等函数的多范式高级解释型编程语言，它支持面向对象程序设计、指令式编程和函数式编程。
+      src: ./safe.svg
+    details: 记录日常开发工作中遇到的一些安全问题并解决。
     link: /js/trusted-event
-  - title: Docker
-    icon:
-      src: ./language/docker.svg
-    details: Docker 是一个应用打包、分发、部署的工具。你也可以把它理解为一个轻量的虚拟机，它只虚拟你软件需要的运行环境，多余的一点都不要。
-    link: /docker/inspect
   - title: 项目规范
     icon:
       src: normalize.svg
@@ -37,7 +32,7 @@ features:
     icon:
       src: zoom-table.svg
     link: /common-tools/cheat-sheet/git
-    details: Git,Docker命令语句速查表
+    details: Git、Docker、Centos等命令语句速查表
   - title: 大陆通行
     icon:
       src: mainland.svg
