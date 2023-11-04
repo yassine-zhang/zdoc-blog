@@ -5,17 +5,19 @@
 正如下所示Dockerfile文件案例，是一个用Nodejs跑起来的后端API项目
 
 ```Dockerfile
-FROM node:11
-# 标签信息，格式key=value
+# 这里node环境版本建议与本地开发环境版本一致，否则版本过低会出现部分语法不支持，无法在服务端跑通
+FROM node:20
+
+# 标签信息，格式key=value，加不加无所谓
 LABEL author="zhangsir"
 
-# 复制代码
+# 复制代码，创建一个app目录，将代码移动到目录中
 ADD . /app
 
 # 设置容器启动后的默认运行目录
 WORKDIR /app
 
-# 运行命令，安装依赖
+# 运行命令，安装依赖（会在build时执行此操作，避免本地项目中.node_modules删除了的情况）
 # RUN 命令可以有多个，但是可以用 && 连接多个命令来减少层级。
 # 例如 RUN npm install && cd /app && mkdir logs
 RUN npm install --registry=https://registry.npm.taobao.org
@@ -23,7 +25,8 @@ RUN npm install --registry=https://registry.npm.taobao.org
 # CMD 指令只能一个，是容器启动后执行的命令，算是程序的入口。
 # 如果还需要运行其他命令可以用 && 连接，也可以写成一个shell脚本去执行。
 # 例如 CMD cd /app && ./start.sh
-CMD node app.js
+# 这一行会在容器运行时去执行，也相当于启动服务
+CMD node indx.js
 ```
 
 对于 `Dockerfile` 文件要写那么位置我建议最好放在项目根目录
