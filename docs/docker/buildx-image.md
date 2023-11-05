@@ -6,7 +6,8 @@
 
 ```Dockerfile
 # 这里node环境版本建议与本地开发环境版本一致，否则版本过低会出现部分语法不支持，无法在服务端跑通
-FROM node:20
+# node:20-alpine3.17适用于轻量级容器化的 Alpine Linux 版本的 Node.js 镜像
+FROM node:20-alpine3.17
 
 # 标签信息，格式key=value，加不加无所谓
 LABEL author="zhangsir"
