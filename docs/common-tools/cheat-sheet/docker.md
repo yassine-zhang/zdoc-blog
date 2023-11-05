@@ -24,7 +24,7 @@
 | 停止指定 ID 的容器 | docker stop &#60;container_id&#62; |
 | 重新启动指定 ID 的容器 | docker restart &#60;container_id&#62; |
 | ---------- | ---------- |
-| 查看容器的日志（例如：在运行 docker ps -a 命令时，看到名为 "my-nginx" 的容器状态为 "Exited"，通常表示容器已经启动但是又立即停止了。） | docker logs my-nginx |
+| 查看容器的日志 | docker logs my-nginx |
 | ---------- | ---------- |
 | 进入正在运行的容器内部进行操作 - 语法 | docker exec [选项] &#60;容器名或容器ID&#62; &#60;命令&#62; |
 | &nbsp;&nbsp;[选项] 是可选的，可以用来指定一些参数，比如 -it 参数可以让命令在交互模式下运行。 |  |
