@@ -25,6 +25,7 @@
 | 重新启动指定 ID 的容器 | docker restart &#60;container_id&#62; |
 | ---------- | ---------- |
 | 查看容器的日志 | docker logs my-nginx |
+| 清除容器log | docker stop &#60;container_id&#62; <br/> rm /var/lib/docker/containers/&#60;container_id&#62;/*-json.log <br/> docker start &#60;container_id&#62; |
 | ---------- | ---------- |
 | 进入正在运行的容器内部进行操作 - 语法 | docker exec [选项] &#60;容器名或容器ID&#62; &#60;命令&#62; |
 | &nbsp;&nbsp;[选项] 是可选的，可以用来指定一些参数，比如 -it 参数可以让命令在交互模式下运行。 |  |
