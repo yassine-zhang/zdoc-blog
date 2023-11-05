@@ -128,6 +128,7 @@ export default defineConfig({
                       },
                       { text: "2.推送镜像到Hub", link: "/docker/push-hub" },
                       { text: "3.多容器组合使用", link: "/docker/compose" },
+                      { text: "4.私有库搭建&使用", link: "/docker/registry" },
                     ],
                   },
                   { text: "错误汇总", link: "/docker/error-summary" },
