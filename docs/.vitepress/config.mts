@@ -15,7 +15,9 @@ export default defineConfig({
       // { text: 'Home', link: '/' },
       {
         text: "安全指南",
-        items: [{ text: "JavaScript", link: "/js/trusted-event" }],
+        items: [
+          { text: "JavaScript", link: "/safety-guidelines/js/trusted-event" },
+        ],
       },
       {
         text: "项目规范",
@@ -81,8 +83,15 @@ export default defineConfig({
           {
             text: "JavaScript",
             items: [
-              { text: "Trusted Event", link: "/js/trusted-event" },
-              { text: "XSS 非法注入", link: "/js/xss" },
+              {
+                text: "Trusted Event",
+                link: "/safety-guidelines/js/trusted-event",
+              },
+              { text: "XSS 非法注入", link: "/safety-guidelines/js/xss" },
+              {
+                text: "非CORS接口POST请求",
+                link: "/safety-guidelines/js/noncors-req",
+              },
             ],
           },
         ],

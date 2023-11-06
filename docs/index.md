@@ -22,7 +22,7 @@ features:
     icon:
       src: ./safe.svg
     details: 记录日常开发工作中遇到的一些安全问题并解决。
-    link: /js/trusted-event
+    link: /safety-guidelines/js/trusted-event
   - title: 项目规范
     icon:
       src: normalize.svg
