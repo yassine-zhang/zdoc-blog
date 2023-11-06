@@ -15,23 +15,14 @@
 ## 命令速查 {#command-spd}
 ！！这里只记了平时常用的命令！
 
-### 使用 Docker 私有仓库的 API 可以进行以下操作：
+### 使用cURL 操作私有仓库API：
 
 | Description                        |   Syntax&Error                                                    |
 | ---------------------------------- | ----------------------------------------------------------------- |
-| 注意： | <span style="color:#e46b59;">如果您的仓库使用了非https协议，那么无需加-u参数登录私有库即可调用</span> |
+| 注意： | <span style="color:#e46b59;">如果您的仓库使用了非https协议，那么无需加-u参数登录私有库或者传token即可调用</span> |
 | ---------- | ---------- |
 | 身份验证 | `curl -u "<username>:<password>" https://your-registry-url/v2/` |
+| 获取访问令牌（Token） | `curl -X GET "https://<registry_host>/v2/token?service=<registry_name>&scope=repository:<repository_name>:pull,push" --user "<username>:<password>"` |
 | 获取该仓库所有标签列表 | `curl -u "<username>:<password>" https://your-registry-url/v2/<repository>/tags/list` |
 | 查看仓库中的镜像列表 | `curl -u "<username>:<password>" https://your-registry-url/v2/_catalog` |
-
-
-### 使用Docker基础语法操作私有库：
-| Description                        |   Syntax&Error                                                    |
-| ---------------------------------- | ----------------------------------------------------------------- |
-| 注意： | <span style="color:#e46b59;">如果您的仓库使用了非https协议，那么必须 <a href="https://yeasy.gitbook.io/docker_practice/repository/registry#pei-zhi-fei-https-cang-ku-di-zhi">配置非https仓库地址</a></span> |
-| ---------- | ---------- |
-| 删除指定标签的镜像 | docker rmi your-registry-url/&#60;repository&#62;:tag |
-| 推送镜像(不加tag默认标签latest) | docker push your-registry-url/&#60;repository&#62;:tag |
-| 拉取镜像(不加tag默认标签latest) | docker pull your-registry-url/&#60;repository&#62;:tag |
-
+| 删除镜像标签 | `curl -X DELETE -H "Authorization: Bearer <access_token>" "https://<registry_host>/v2/<repository_name>/manifests/<tag>"` |
