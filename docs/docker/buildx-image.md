@@ -18,7 +18,8 @@ Docker官方提供了多个Node镜像，每个镜像都基于不同的Linux系�
 2. 基于Debian的Node镜像：Debian是一个广泛使用的Linux发行版，也是许多Docker镜像的默认选择之一。基于Debian构建的Node镜像通常使用Debian版本的Node.js运行时环境。
 
 > Alpine默认shell是sh shell，而Debian默认shell是bash shell.
-> :::
+
+:::
 
 ```Dockerfile
 # 这里node环境版本建议与本地开发环境版本一致，否则版本过低会出现部分语法不支持，无法在服务端跑通
