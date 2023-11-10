@@ -17,6 +17,7 @@ export default defineConfig({
         text: "安全指南",
         items: [
           { text: "JavaScript", link: "/safety-guidelines/js/trusted-event" },
+          { text: "Linux", link: "/safety-guidelines/linux/summary" },
         ],
       },
       {
@@ -92,6 +93,12 @@ export default defineConfig({
                 text: "非CORS接口POST请求",
                 link: "/safety-guidelines/js/noncors-req",
               },
+            ],
+          },
+          {
+            text: "Linux",
+            items: [
+              { text: "firewalld", link: "/safety-guidelines/linux/summary" },
             ],
           },
         ],
