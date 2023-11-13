@@ -2,6 +2,9 @@
 
 | Description                        |   Syntax&Error                                                    |
 | ---------------------------------- | ----------------------------------------------------------------- |
+| docker服务开机自启动 | systemctl enable docker |
+| 容器自启动（每当docker服务启动时自动启动容器） | docker run --restart=always ... |
+| ---------- | ---------- |
 | 从容器仓库拉取镜像到本地 | docker pull ubuntu |
 | 从容器仓库拉取镜像到本地，指定版本号 | docker pull ubuntu:20.04 |
 | ---------- | ---------- |
@@ -44,14 +47,17 @@
 | 为已有标签添加新的名称(这将创建一个新的标签 my_new_tag，并将其与已有的 `my_repository/my_image:my_tag` 镜像关联起来。) | docker tag my_repository/my_image:my_tag my_repository/my_image:my_new_tag |
 | 添加标签的疑惑问题：为镜添加新标签后会多出一个镜像，那么删除原镜像后新镜像能否正常使用 | 镜像之间是相互独立的，删除原镜像不影响新镜像使用 |
 | ---------- | ---------- |
-| docker服务开机自启动 | systemctl enable docker |
-| 容器自启动（每当docker服务启动时自动启动容器） | docker run --restart=always ... |
-| ---------- | ---------- |
 | 删除镜像(私有仓库同理，只需要将镜像改成repository/image:tag) | docker rmi ... |
 | 使用docker rmi命令删除指定的镜像 | docker rmi my-repo:v1.0 |
 | 删除多个标签的镜像，可以同时指定多个标签名 | docker rmi my-repo:v1.0 my-repo:v2.0 |
 | 删除指定仓库下所有镜像，可以使用docker rmi命令加上-f选项 | docker rmi -f $(docker images my-repo -q) |
-
+| ---------- | ---------- |
+| Compose组合容器 | 注意：docker-compose只能在含有该配置文件的同级目录下使用 |
+| 检查Docker Compose配置文件是否正确 | docker-compose -f your-compose-file.yml config |
+| 在后台运行Compose容器 | docker-compose up -d |
+| 启动/停止/重启Docker Compose | docker-compose start/stop/restart |
+| 在后台重新构建并启动服务（原有容器会删除） | docker-compose up -d --build |
+| 在后台更新某个具体的服务（原有容器会删除） | docker-compose up -d --build &#60;service_name&#62; |
 
 
 ## 参考文献 {#reference}
