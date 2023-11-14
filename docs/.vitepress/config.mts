@@ -90,7 +90,7 @@ export default defineConfig({
               },
               { text: "XSS 非法注入", link: "/safety-guidelines/js/xss" },
               {
-                text: "非CORS接口POST请求",
+                text: "CORS详解",
                 link: "/safety-guidelines/js/cors-desc",
               },
             ],
