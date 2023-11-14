@@ -2,6 +2,9 @@
 docs/common-tools/cheat-sheet/*.md
 docs/docker/registry.md
 
+# Avoid other formatting problems that affect change observability.
+docs/safety-guidelines/js/cors-desc.md
+
 # Contains code focus related fragments, formatting will cause formatting errors
 docs/specification/create-vue/summary.md
 
