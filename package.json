@@ -3,7 +3,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@types/node": "^20.5.4",
@@ -16,5 +17,8 @@
     "*.{js,md,ts,vue,json,mts}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "ant-design-vue": "^4.0.7"
   }
 }
