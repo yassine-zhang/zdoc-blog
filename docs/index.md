@@ -7,7 +7,7 @@ hero:
   text: "赋予程序以生命"
   tagline: ZDoc译为Zhang Documents，保持良好的心态书写独属于我的笔记💪
   image:
-    src: strive.svg
+    src: safe.svg
     alt: logo
   actions:
     - theme: brand

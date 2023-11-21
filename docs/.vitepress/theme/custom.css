@@ -1,6 +1,10 @@
 /* 引入字体 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* 根变量覆盖 */
 :root {
@@ -11,12 +15,14 @@
 
   /* 标题 */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg,
-      #fccf31 10%,
-      #f55555 100%);
+  --vp-home-hero-name-background: linear-gradient(
+    135deg,
+    #fccf31 10%,
+    #f55555 100%
+  );
 
   /* 图标背景 */
-  /* --vp-home-hero-image-background-image: linear-gradient(135deg, #E80505 10%, #FDD819 100%); */
+  --vp-home-hero-image-background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
 
   --vp-home-hero-image-filter: blur(72px);
 
@@ -39,6 +45,6 @@
 }
 
 /* 修改默认light模式下行内代码颜色 */
-.vp-doc :not(pre, h1, h2, h3, h4, h5, h6)>code {
+.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
   color: var(--vp-code-color);
 }

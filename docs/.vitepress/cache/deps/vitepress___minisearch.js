@@ -1,3 +1,5 @@
+import "./chunk-ZS7NZCD4.js";
+
 // node_modules/minisearch/dist/es/index.js
 var __assign = function () {
   __assign =
@@ -1343,22 +1345,22 @@ var MiniSearch =
       if (searchOptions === void 0) {
         searchOptions = {};
       }
-      var combinedResults = this.executeQuery(query, searchOptions);
+      var rawResults = this.executeQuery(query, searchOptions);
       var results = [];
       try {
         for (
-          var combinedResults_1 = __values(combinedResults),
-            combinedResults_1_1 = combinedResults_1.next();
-          !combinedResults_1_1.done;
-          combinedResults_1_1 = combinedResults_1.next()
+          var rawResults_1 = __values(rawResults),
+            rawResults_1_1 = rawResults_1.next();
+          !rawResults_1_1.done;
+          rawResults_1_1 = rawResults_1.next()
         ) {
-          var _b = __read(combinedResults_1_1.value, 2),
+          var _b = __read(rawResults_1_1.value, 2),
             docId = _b[0],
             _c = _b[1],
             score = _c.score,
             terms = _c.terms,
             match = _c.match;
-          var quality = terms.length;
+          var quality = terms.length || 1;
           var result = {
             id: this._documentIds.get(docId),
             score: score * quality,
@@ -1375,14 +1377,21 @@ var MiniSearch =
       } finally {
         try {
           if (
-            combinedResults_1_1 &&
-            !combinedResults_1_1.done &&
-            (_a2 = combinedResults_1.return)
+            rawResults_1_1 &&
+            !rawResults_1_1.done &&
+            (_a2 = rawResults_1.return)
           )
-            _a2.call(combinedResults_1);
+            _a2.call(rawResults_1);
         } finally {
           if (e_13) throw e_13.error;
         }
+      }
+      if (
+        query === MiniSearch2.wildcard &&
+        searchOptions.boostDocument == null &&
+        this._options.searchOptions.boostDocument == null
+      ) {
+        return results;
       }
       results.sort(byScore);
       return results;
@@ -1595,6 +1604,9 @@ var MiniSearch =
       if (searchOptions === void 0) {
         searchOptions = {};
       }
+      if (query === MiniSearch2.wildcard) {
+        return this.executeWildcardQuery(searchOptions);
+      }
       if (typeof query !== "string") {
         var options_1 = __assign(__assign(__assign({}, searchOptions), query), {
           queries: void 0,
@@ -1760,6 +1772,42 @@ var MiniSearch =
       }
       return results;
     };
+    MiniSearch2.prototype.executeWildcardQuery = function (searchOptions) {
+      var e_21, _a2;
+      var results = /* @__PURE__ */ new Map();
+      var options = __assign(
+        __assign({}, this._options.searchOptions),
+        searchOptions,
+      );
+      try {
+        for (
+          var _b = __values(this._documentIds), _c = _b.next();
+          !_c.done;
+          _c = _b.next()
+        ) {
+          var _d = __read(_c.value, 2),
+            shortId = _d[0],
+            id = _d[1];
+          var score = options.boostDocument
+            ? options.boostDocument(id, "", this._storedFields.get(shortId))
+            : 1;
+          results.set(shortId, {
+            score,
+            terms: [],
+            match: {},
+          });
+        }
+      } catch (e_21_1) {
+        e_21 = { error: e_21_1 };
+      } finally {
+        try {
+          if (_c && !_c.done && (_a2 = _b.return)) _a2.call(_b);
+        } finally {
+          if (e_21) throw e_21.error;
+        }
+      }
+      return results;
+    };
     MiniSearch2.prototype.combineResults = function (results, combineWith) {
       if (combineWith === void 0) {
         combineWith = OR;
@@ -1771,7 +1819,7 @@ var MiniSearch =
       return results.reduce(combinators[operator]) || /* @__PURE__ */ new Map();
     };
     MiniSearch2.prototype.toJSON = function () {
-      var e_21, _a2, e_22, _b;
+      var e_22, _a2, e_23, _b;
       var index = [];
       try {
         for (
@@ -1785,7 +1833,7 @@ var MiniSearch =
           var data = {};
           try {
             for (
-              var fieldIndex_2 = ((e_22 = void 0), __values(fieldIndex)),
+              var fieldIndex_2 = ((e_23 = void 0), __values(fieldIndex)),
                 fieldIndex_2_1 = fieldIndex_2.next();
               !fieldIndex_2_1.done;
               fieldIndex_2_1 = fieldIndex_2.next()
@@ -1795,8 +1843,8 @@ var MiniSearch =
                 freqs = _f[1];
               data[fieldId] = Object.fromEntries(freqs);
             }
-          } catch (e_22_1) {
-            e_22 = { error: e_22_1 };
+          } catch (e_23_1) {
+            e_23 = { error: e_23_1 };
           } finally {
             try {
               if (
@@ -1806,18 +1854,18 @@ var MiniSearch =
               )
                 _b.call(fieldIndex_2);
             } finally {
-              if (e_22) throw e_22.error;
+              if (e_23) throw e_23.error;
             }
           }
           index.push([term, data]);
         }
-      } catch (e_21_1) {
-        e_21 = { error: e_21_1 };
+      } catch (e_22_1) {
+        e_22 = { error: e_22_1 };
       } finally {
         try {
           if (_d && !_d.done && (_a2 = _c.return)) _a2.call(_c);
         } finally {
-          if (e_21) throw e_21.error;
+          if (e_22) throw e_22.error;
         }
       }
       return {
@@ -1843,7 +1891,7 @@ var MiniSearch =
       bm25params,
       results,
     ) {
-      var e_23, _a2, e_24, _b, _c;
+      var e_24, _a2, e_25, _b, _c;
       if (results === void 0) {
         results = /* @__PURE__ */ new Map();
       }
@@ -1863,7 +1911,7 @@ var MiniSearch =
           var avgFieldLength = this._avgFieldLength[fieldId];
           try {
             for (
-              var _f = ((e_24 = void 0), __values(fieldTermFreqs.keys())),
+              var _f = ((e_25 = void 0), __values(fieldTermFreqs.keys())),
                 _g = _f.next();
               !_g.done;
               _g = _f.next()
@@ -1911,23 +1959,23 @@ var MiniSearch =
                 });
               }
             }
-          } catch (e_24_1) {
-            e_24 = { error: e_24_1 };
+          } catch (e_25_1) {
+            e_25 = { error: e_25_1 };
           } finally {
             try {
               if (_g && !_g.done && (_b = _f.return)) _b.call(_f);
             } finally {
-              if (e_24) throw e_24.error;
+              if (e_25) throw e_25.error;
             }
           }
         }
-      } catch (e_23_1) {
-        e_23 = { error: e_23_1 };
+      } catch (e_24_1) {
+        e_24 = { error: e_24_1 };
       } finally {
         try {
           if (_e && !_e.done && (_a2 = _d.return)) _a2.call(_d);
         } finally {
-          if (e_23) throw e_23.error;
+          if (e_24) throw e_24.error;
         }
       }
       return results;
@@ -1971,7 +2019,7 @@ var MiniSearch =
       fieldId,
       term,
     ) {
-      var e_25, _a2;
+      var e_26, _a2;
       try {
         for (
           var _b = __values(Object.keys(this._fieldIds)), _c = _b.next();
@@ -1997,13 +2045,13 @@ var MiniSearch =
             return;
           }
         }
-      } catch (e_25_1) {
-        e_25 = { error: e_25_1 };
+      } catch (e_26_1) {
+        e_26 = { error: e_26_1 };
       } finally {
         try {
           if (_c && !_c.done && (_a2 = _b.return)) _a2.call(_b);
         } finally {
-          if (e_25) throw e_25.error;
+          if (e_26) throw e_26.error;
         }
       }
     };
@@ -2048,7 +2096,7 @@ var MiniSearch =
       this._avgFieldLength[fieldId] = totalFieldLength / (count - 1);
     };
     MiniSearch2.prototype.saveStoredFields = function (documentId, doc) {
-      var e_26, _a2;
+      var e_27, _a2;
       var _b = this._options,
         storeFields = _b.storeFields,
         extractField = _b.extractField;
@@ -2069,8 +2117,8 @@ var MiniSearch =
           var fieldValue = extractField(doc, fieldName);
           if (fieldValue !== void 0) documentFields[fieldName] = fieldValue;
         }
-      } catch (e_26_1) {
-        e_26 = { error: e_26_1 };
+      } catch (e_27_1) {
+        e_27 = { error: e_27_1 };
       } finally {
         try {
           if (
@@ -2080,10 +2128,11 @@ var MiniSearch =
           )
             _a2.call(storeFields_1);
         } finally {
-          if (e_26) throw e_26.error;
+          if (e_27) throw e_27.error;
         }
       }
     };
+    MiniSearch2.wildcard = Symbol("*");
     return MiniSearch2;
   })();
 var getOwnProperty = function (object, property) {
@@ -2094,7 +2143,7 @@ var getOwnProperty = function (object, property) {
 var combinators =
   ((_a = {}),
   (_a[OR] = function (a, b) {
-    var e_27, _a2;
+    var e_28, _a2;
     try {
       for (
         var _b = __values(b.keys()), _c = _b.next();
@@ -2115,19 +2164,19 @@ var combinators =
           assignUniqueTerms(existing.terms, terms);
         }
       }
-    } catch (e_27_1) {
-      e_27 = { error: e_27_1 };
+    } catch (e_28_1) {
+      e_28 = { error: e_28_1 };
     } finally {
       try {
         if (_c && !_c.done && (_a2 = _b.return)) _a2.call(_b);
       } finally {
-        if (e_27) throw e_27.error;
+        if (e_28) throw e_28.error;
       }
     }
     return a;
   }),
   (_a[AND] = function (a, b) {
-    var e_28, _a2;
+    var e_29, _a2;
     var combined = /* @__PURE__ */ new Map();
     try {
       for (
@@ -2149,19 +2198,19 @@ var combinators =
           match: Object.assign(existing.match, match),
         });
       }
-    } catch (e_28_1) {
-      e_28 = { error: e_28_1 };
+    } catch (e_29_1) {
+      e_29 = { error: e_29_1 };
     } finally {
       try {
         if (_c && !_c.done && (_a2 = _b.return)) _a2.call(_b);
       } finally {
-        if (e_28) throw e_28.error;
+        if (e_29) throw e_29.error;
       }
     }
     return combined;
   }),
   (_a[AND_NOT] = function (a, b) {
-    var e_29, _a2;
+    var e_30, _a2;
     try {
       for (
         var _b = __values(b.keys()), _c = _b.next();
@@ -2171,13 +2220,13 @@ var combinators =
         var docId = _c.value;
         a.delete(docId);
       }
-    } catch (e_29_1) {
-      e_29 = { error: e_29_1 };
+    } catch (e_30_1) {
+      e_30 = { error: e_30_1 };
     } finally {
       try {
         if (_c && !_c.done && (_a2 = _b.return)) _a2.call(_b);
       } finally {
-        if (e_29) throw e_29.error;
+        if (e_30) throw e_30.error;
       }
     }
     return a;
@@ -2223,17 +2272,22 @@ var defaultOptions = {
   extractField: function (document, fieldName) {
     return document[fieldName];
   },
-  tokenize: function (text, fieldName) {
+  tokenize: function (text) {
     return text.split(SPACE_OR_PUNCTUATION);
   },
-  processTerm: function (term, fieldName) {
+  processTerm: function (term) {
     return term.toLowerCase();
   },
   fields: void 0,
   searchOptions: void 0,
   storeFields: [],
-  logger: function (level, message, code) {
-    return console != null && console.warn != null && console[level](message);
+  logger: function (level, message) {
+    if (
+      typeof (console === null || console === void 0
+        ? void 0
+        : console[level]) === "function"
+    )
+      console[level](message);
   },
   autoVacuum: true,
 };
@@ -2262,7 +2316,7 @@ var assignUniqueTerm = function (target, term) {
   if (!target.includes(term)) target.push(term);
 };
 var assignUniqueTerms = function (target, source) {
-  var e_30, _a2;
+  var e_31, _a2;
   try {
     for (
       var source_1 = __values(source), source_1_1 = source_1.next();
@@ -2272,14 +2326,14 @@ var assignUniqueTerms = function (target, source) {
       var term = source_1_1.value;
       if (!target.includes(term)) target.push(term);
     }
-  } catch (e_30_1) {
-    e_30 = { error: e_30_1 };
+  } catch (e_31_1) {
+    e_31 = { error: e_31_1 };
   } finally {
     try {
       if (source_1_1 && !source_1_1.done && (_a2 = source_1.return))
         _a2.call(source_1);
     } finally {
-      if (e_30) throw e_30.error;
+      if (e_31) throw e_31.error;
     }
   }
 };
@@ -2292,7 +2346,7 @@ var createMap = function () {
   return /* @__PURE__ */ new Map();
 };
 var objectToNumericMap = function (object) {
-  var e_31, _a2;
+  var e_32, _a2;
   var map = /* @__PURE__ */ new Map();
   try {
     for (
@@ -2303,13 +2357,13 @@ var objectToNumericMap = function (object) {
       var key = _c.value;
       map.set(parseInt(key, 10), object[key]);
     }
-  } catch (e_31_1) {
-    e_31 = { error: e_31_1 };
+  } catch (e_32_1) {
+    e_32 = { error: e_32_1 };
   } finally {
     try {
       if (_c && !_c.done && (_a2 = _b.return)) _a2.call(_b);
     } finally {
-      if (e_31) throw e_31.error;
+      if (e_32) throw e_32.error;
     }
   }
   return map;
