@@ -278,12 +278,12 @@ export default defineConfig({
     aside: false,
   },
 
-  markdown: {
-    theme: {
-      dark: "github-dark",
-      light: "github-light",
-    },
-  },
+  // markdown: {
+  //   theme: {
+  //     dark: "github-dark",
+  //     light: "github-light",
+  //   },
+  // },
 
   // ...其他配置
   async buildEnd(siteConfig) {

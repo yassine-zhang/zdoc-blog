@@ -433,7 +433,7 @@ const cardItemMsg = [
     {
       title: "Express",
       content: "基于 Node.js 平台，快速、开放、极简的 Web 开发框架",
-      title_class: "pl-0 text-center",
+      title_class: "pr-4 text-center",
     },
     {
       title: "Ngnix",

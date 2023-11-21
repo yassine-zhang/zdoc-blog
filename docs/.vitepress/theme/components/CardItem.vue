@@ -43,7 +43,8 @@
   </a-popover>
 </template>
 <script setup>
-import { defineProps } from "vue";
+// `defineProps` is a compiler macro and no longer needs to be imported.
+// import { defineProps } from "vue";
 
 const props = defineProps([
   "content",

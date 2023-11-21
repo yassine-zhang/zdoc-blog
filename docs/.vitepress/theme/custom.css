@@ -6,6 +6,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 修复tailwind和vitepress之间mono代码样式权级问题 */
+code {
+  font-family: "Roboto Mono", monospace !important;
+}
+
 /* 根变量覆盖 */
 :root {
   --vp-code-color: #3451b2;
