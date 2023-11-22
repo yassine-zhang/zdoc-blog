@@ -8,6 +8,7 @@ import {
   Space,
   Card,
   Popover,
+  Button,
 } from "ant-design-vue";
 import "./custom.css";
 
@@ -22,5 +23,6 @@ export default {
     app.use(Space);
     app.use(Card);
     app.use(Popover);
+    app.use(Button);
   },
 };

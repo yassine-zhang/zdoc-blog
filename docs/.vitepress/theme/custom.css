@@ -38,7 +38,8 @@ code {
   --vp-button-brand-hover-border: transparent;
 
   /* 主要颜色值 */
-  --vp-c-brand: #e46b59;
+  /* --vp-c-brand-1: #e46b59; */
+  --vp-c-brand-1: #3875f6;
 }
 
 /* .dark 暗黑模式下修改行内代码颜色值 */
@@ -46,7 +47,7 @@ code {
   /* 行内代码颜色 */
   --vp-code-color: #a8b1ff;
   /* 主要颜色值 */
-  --vp-c-brand: #f8d367;
+  /* --vp-c-brand-1: #f8d367; */
 }
 
 /* 修改默认light模式下行内代码颜色 */

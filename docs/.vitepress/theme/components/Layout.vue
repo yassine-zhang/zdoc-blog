@@ -4,6 +4,7 @@
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme-without-fonts";
 import { nextTick, provide } from "vue";
+import Bilibili from "./../icons/bilibili.vue";
 
 const { isDark } = useData();
 
@@ -42,10 +43,72 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
 </script>
 
 <template>
-  <DefaultTheme.Layout />
+  <DefaultTheme.Layout>
+    <template #home-hero-after>
+      <div class="HomeHeroAfter">
+        <div class="max-w-[1152px] mx-auto">
+          <a-space class="container w-full">
+            <a-button
+              class="font-medium flex justify-center items-center gap-2"
+              type="primary"
+              shape="round"
+              size="large"
+              target="__blank"
+              href="https://space.bilibili.com/483711690?spm_id_from=333.1007.0.0"
+            >
+              <template #icon>
+                <Bilibili />
+              </template>
+              关注
+            </a-button>
+            <a-badge dot :offset="[-5, 5]">
+              <a-button
+                class="font-medium"
+                size="large"
+                shape="round"
+                href="/about"
+                >了解作者</a-button
+              >
+            </a-badge>
+          </a-space>
+        </div>
+      </div>
+    </template>
+  </DefaultTheme.Layout>
 </template>
 
 <style>
+.VPHero {
+  padding-bottom: 20px !important;
+}
+@media (min-width: 640px) {
+  .HomeHeroAfter {
+    padding: 0 48px;
+    padding-bottom: 80px;
+  }
+  .HomeHeroAfter .container {
+    justify-content: center;
+  }
+}
+@media (min-width: 960px) {
+  .HomeHeroAfter {
+    padding: 0 64px;
+    padding-bottom: 80px;
+  }
+  .HomeHeroAfter .container {
+    justify-content: left;
+  }
+}
+@media (max-width: 639px) {
+  .HomeHeroAfter {
+    padding: 0 24px;
+    padding-bottom: 80px;
+  }
+  .HomeHeroAfter .container {
+    justify-content: center;
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

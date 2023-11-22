@@ -9,13 +9,6 @@ hero:
   image:
     src: safe.svg
     alt: logo
-  actions:
-    - theme: brand
-      text: + Follow Me(Bilibili)
-      link: https://space.bilibili.com/483711690?spm_id_from=333.1007.0.0
-    - theme: alt
-      text: About Me
-      link: /about
 
 features:
   - title: 安全指南
