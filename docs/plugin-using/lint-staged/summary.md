@@ -27,7 +27,7 @@ $ git commit
 
 ## 如何安装和配置？
 
-![Alt text](image.png)
+![install and setup](Install&Setup.png)
 
 ## step1: install lint-staged of npm
 
