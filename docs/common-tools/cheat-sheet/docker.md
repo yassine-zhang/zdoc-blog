@@ -13,6 +13,7 @@
 | ---------- | ---------- |
 | 删除容器 | docker rm &#60;container-id&#62; |
 | 强制删除容器（容器正在运行） | docker rm -f &#60;container-id&#62; |
+| 强制删除容器并在删除时移除数据卷 | docker rm -f -v &#60;container-id&#62; |
 | 删除多个容器 | docker rm &#60;container-id-1&#62; &#60;container-id-2&#62; &#60;container-id-3&#62; |
 | 删除所有已停止的容器 | docker container prune |
 | ---------- | ---------- |
@@ -52,13 +53,46 @@
 | 删除多个标签的镜像，可以同时指定多个标签名 | docker rmi my-repo:v1.0 my-repo:v2.0 |
 | 删除指定仓库下所有镜像，可以使用docker rmi命令加上-f选项 | docker rmi -f $(docker images my-repo -q) |
 | ---------- | ---------- |
-| Compose组合容器 | 注意：docker-compose只能在含有该配置文件的同级目录下使用 |
-| 检查Docker Compose配置文件是否正确 | docker-compose -f your-compose-file.yml config |
-| 在后台运行Compose容器 | docker-compose up -d |
-| 启动/停止/重启Docker Compose | docker-compose start/stop/restart |
-| 在后台重新构建并启动服务（原有容器会删除） | docker-compose up -d --build |
-| 在后台更新某个具体的服务（原有容器会删除） | docker-compose up -d --build &#60;service_name&#62; |
+| Compose组合容器 | 注意：docker compose只能在含有该配置文件的同级目录下使用 |
+| 检查Docker Compose配置文件是否正确 | docker compose -f your-compose-file.yml config |
+| 在后台运行Compose容器 | docker compose up -d |
+| 启动/停止/重启Docker Compose | docker compose start/stop/restart |
+| 移除Docker Compose所有容器 | docker compose rm |
+| 在后台重新构建并启动服务（原有容器会删除） | docker compose up -d --build |
+| 在后台更新某个具体的服务（原有容器会删除） | docker compose up -d --build &#60;service_name&#62; |
+| ---------- | ---------- |
+| Volume数据卷 | 解决容器内部数据持久化的问题，可在不同容器之间使用，<br/>当数据卷为空时，挂载点内文件会复制到数据卷中，仅当数据卷为空时 |
+| 数据卷特点 | |
+| `数据卷` 可以在容器之间共享和重用 | 对 `数据卷` 的修改会立马生效 |
+| 对 `数据卷` 的更新，不会影响镜像 | `数据卷` 默认会一直存在，即使容器被删除 |
+| 创建数据卷 | docker volume create my-vol |
+| 卸载数据卷（挂载此数据卷的容器内部挂载点数据不会丢失） | docker volume rm my_vol |
+| 清理无主的数据卷 | docker volume prune |
+| 查看数据卷 | docker volume ls \| grep my-vol |
+| 查看指定数据卷的信息 | docker volume inspect my-vol |
+| 创建新的容器并使用-v指定数据卷挂载位置 | docker run -d --name my_container -v my_volume:/path/in/container my_image |
+| 创建新的容器并使用--mount指定挂载信息 | docker run -d --name my_container --mount source=my_volume,target=/path/in/container my_image |
 
+
+## docker inspect
+docker inspect 命令可以用来获取 Docker 对象（如容器、镜像等）的详细信息，包括其配置、网络设置、挂载点等。
+
+```shell
+# 查看容器详细信息(返回容器的详细信息，包括容器的 ID、状态、网络设置、挂载点等。)
+docker inspect <container-name>
+
+# 获取容器 IP 地址
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container-name>
+
+# 查看容器的日志文件路径
+docker inspect -f '{{.LogPath}}' <container-name>
+
+# 查看容器的挂载点(返回一个 JSON 格式的字符串，其中包含容器的挂载点信息。)
+docker inspect -f '{{json .Mounts}}' <container-name>
+
+# 查看镜像的详细信息(返回镜像的详细信息，包括镜像的 ID、大小、创建时间等。)
+docker inspect <image-name>
+```
 
 ## 参考文献 {#reference}
 [Docker快速入门](https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP)
