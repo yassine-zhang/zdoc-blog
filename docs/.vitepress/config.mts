@@ -93,6 +93,10 @@ export default defineConfig({
                 text: "CORS详解",
                 link: "/safety-guidelines/js/cors-desc",
               },
+              {
+                text: "SQL注入",
+                link: "/safety-guidelines/js/sql-injection",
+              },
             ],
           },
           {
