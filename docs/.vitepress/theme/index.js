@@ -1,5 +1,5 @@
 import Layout from "./components/Layout.vue";
-// import DefaultTheme from "vitepress/theme-without-fonts";
+import DefaultTheme from "vitepress/theme-without-fonts";
 import {
   Timeline,
   Typography,
@@ -13,6 +13,7 @@ import {
 import "./custom.css";
 
 export default {
+  extends: DefaultTheme,
   Layout,
   enhanceApp({ app, router, siteData }) {
     // ...

@@ -232,6 +232,10 @@ export default defineConfig({
             text: "Pinia持久化存储插件",
             link: "https://seb-l.github.io/pinia-plugin-persist/",
           },
+          {
+            text: "fs-extra NodeJS扩展方法",
+            link: "/plugin-using/fs-extra/summary",
+          },
         ],
       },
     ],
@@ -276,6 +280,10 @@ export default defineConfig({
     },
 
     aside: false,
+
+    outline: {
+      level: [1, 4],
+    },
   },
 
   // markdown: {
