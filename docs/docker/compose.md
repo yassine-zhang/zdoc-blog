@@ -23,8 +23,7 @@ YAML文件内容格式化网站：https://www.yamllint.com/
 
 ---
 
-<br/>
-<br/>
+<br />
 
 如下案例，我将它应用在 `NodeJS` 后端API项目调用 `MySQL` 接口
 
@@ -35,7 +34,9 @@ version: '3' #可以固定这么写，此版本与docker-compose功能相关
 services:
   mysql:
     image: mysql  #mysql服务
-    command: --default-authentication-plugin=caching_sha2_password
+    # 此加密协议在mysql8.0是默认的，但NodeJS中mysql模块并不完全支持`caching_sha2_password`
+    # command: --default-authentication-plugin=caching_sha2_password
+    command: --default-authentication-plugin=mysql_native_password
     ports:
         - "8082:3306"
     restart: always  # docker服务启动后自启动
@@ -66,15 +67,53 @@ networks: #定义服务的桥 用来服务连接
   docker-node:
 ```
 
-值得一提的是，如果某个镜像使用 `NodeJS` 作为开发框架那么像上面定义的 `environment` 我们便可以通过 `process.env.XXX` 来获取到，这种就属于暴露特定上下文的env环境变量
-
-> 比如：使用JS原生来写的项目构建成镜像后便可以通过 `import.meta.env.XXX` 上下文元数据来获取上面 `environment` 定义的一些属性
-
 ::: info
 上面配置信息运行后，就比如镜像，如果在本地没有就会从仓库去找，会依次从配置的仓库地址中去找，非HTTPS私有库也可以
 
-我们可以在本机测试没问题的话再通过 `docker push` 命令将镜像推送到仓库，然后在服务器拉取并运行容器
+我们可以在本机测试没问题的话再通过 `docker push` 命令将镜像推送到仓库，然后在服务器直接运行Compose容器。
 :::
+
+## 常见问题 {#common-problem}
+
+::: details Docker Compose中服务项内`environment`可以按照什么格式来写？
+在Docker Compose中，`environment`关键字用于定义服务的环境变量。它有两种常见的格式：固定格式和自定义格式。
+
+固定格式：
+
+```yaml
+version: "3.8"
+services:
+  myservice:
+    image: myimage
+    environment:
+      - ENV_VAR1=value1
+      - ENV_VAR2=value2
+```
+
+在固定格式中，每个环境变量被表示为一个简单的字符串，格式为`ENV_VAR=value`。每个环境变量都是一个独立的字符串项，使用`-`符号开头。这是最常见的环境变量定义方式，也是最易读易懂的方式之一。
+
+自定义格式：
+
+```yaml
+version: "3.8"
+services:
+  myservice:
+    image: myimage
+    environment:
+      ENV_VAR1: value1
+      ENV_VAR2: value2
+```
+
+在自定义格式中，每个环境变量使用键值对的形式表示，格式为`ENV_VAR: value`。这种格式更接近于键值对的表示方式，更清晰地表达了每个环境变量的名字和值。
+
+无论选择哪种格式，都能够成功定义服务的环境变量。在实际应用中，你可以根据自己的喜好和团队的约定选择最适合的格式。
+:::
+
+::: details 环境变量使用方法
+
+1. 如果运行在`Node.js`环境中可以使用`process.env.xx`来获取环境变量的值。
+2. 如果运行在浏览器端，可以使用`import.meta.env.xx`来获取环境变量的值。
+   :::
 
 ## Compose新型使用方法 {#compose-new-use-method}
 
