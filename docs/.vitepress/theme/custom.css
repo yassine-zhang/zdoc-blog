@@ -11,9 +11,28 @@ code {
   font-family: "Roboto Mono", monospace !important;
 }
 
+/* 调整区块引用左边边框宽度 */
+.vp-doc blockquote {
+  border-left: 3px solid var(--vp-c-divider) !important;
+}
+
+/* 调整区块引用内部代码颜色 */
+.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) blockquote code {
+  color: #67676c !important;
+}
+.dark .vp-doc :not(pre, h1, h2, h3, h4, h5, h6) blockquote code {
+  color: #93949b !important;
+}
+
 /* 根变量覆盖 */
 :root {
-  --vp-code-color: #3451b2;
+  /* 行内代码颜色 */
+  --vp-code-color: #202328;
+  /* 主要内容区域文本颜色 */
+  --vp-c-text-1: #202328;
+  /* 行内代码背景 */
+  --vp-code-bg: #eff1f2;
+  /* --vp-code-color: #3451b2; */
   --vp-c-border: transparent;
   --vp-font-family-base: "Noto Sans SC", arial, sans-serif;
   --vp-font-family-mono: "Roboto Mono", monospace;
@@ -45,7 +64,18 @@ code {
 /* .dark 暗黑模式下修改行内代码颜色值 */
 .dark {
   /* 行内代码颜色 */
-  --vp-code-color: #a8b1ff;
+  --vp-code-color: #e7edf2 !important;
+  /* 主要内容区域文本颜色 */
+  --vp-c-text-1: #e7edf2;
+  /* 行内代码背景 */
+  --vp-code-bg: #353940;
+  /* 内容部分背景色 */
+  --vp-c-bg: #0e1116;
+  /* 侧边栏部分背景色 */
+  --vp-sidebar-bg-color: #0e1116;
+  /* 代码块背景颜色 */
+  --vp-code-block-bg: #171b21;
+
   /* 主要颜色值 */
   /* --vp-c-brand-1: #f8d367; */
 }

@@ -2,7 +2,7 @@
 aside: true
 ---
 
-## Node.js:fs-extra
+# Node.js:fs-extra
 
 `fs-extra` 添加了原生`fs`不支持的更为便捷的文件系统方法，并为`fs`方法添加了异步支持。它还使用了[graceful-fs](https://github.com/isaacs/node-graceful-fs)来防止`EMFILE`错误，它也是`fs`的替代品。
 

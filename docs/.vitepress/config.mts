@@ -240,6 +240,18 @@ export default defineConfig({
             text: "fs-extra NodeJS扩展方法",
             link: "/plugin-using/fs-extra/summary",
           },
+          {
+            text: "promise-retry重试函数",
+            link: "/plugin-using/promise-retry/summary",
+          },
+          {
+            text: "Moment.js",
+            link: "https://moment.nodejs.cn/",
+          },
+          {
+            text: "CryptoJS实现标准安全加密",
+            link: "https://cryptojs.gitbook.io/docs/",
+          },
         ],
       },
     ],
@@ -286,7 +298,7 @@ export default defineConfig({
     aside: false,
 
     outline: {
-      level: [1, 4],
+      level: [2, 4],
     },
   },
 
