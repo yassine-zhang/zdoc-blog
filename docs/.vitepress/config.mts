@@ -309,19 +309,8 @@ export default defineConfig({
   //   },
   // },
 
-  // ...其他配置
-  async buildEnd(siteConfig) {
-    // 配置网站基础路径
-    const baseURL = "https://reports.org.cn";
-    let siteMapStr = "";
-    for (const page of siteConfig.pages) {
-      siteMapStr += `${baseURL}/${page.replace(/md$/, "html")}\n`;
-    }
-    // 生成文件
-    try {
-      fs.writeFileSync(`${siteConfig.outDir}/sitemap.txt`, siteMapStr);
-    } catch (err) {
-      console.log("create sitemap.txt failed!", err);
-    }
+  // SEO sitemap.xml相关配置
+  sitemap: {
+    hostname: "https://reports.org.cn",
   },
 });
