@@ -49,7 +49,7 @@ Docker官方提供了多个Node镜像，每个镜像都基于不同的Linux系�
 # node:20-alpine3.17适用于轻量级容器化的 Alpine Linux 版本的 Node.js 镜像
 FROM node:20-alpine3.17
 
-# 复制代码，创建一个app目录，将代码移动到目录中
+# 创建一个app目录，将dockerfile文件所在目录所有文件添加到app
 ADD . /app
 
 # 设置容器启动后的默认运行目录
@@ -58,7 +58,13 @@ WORKDIR /app
 # 运行命令，安装依赖（会在build时执行此操作，避免本地项目中.node_modules删除了的情况）
 # RUN 命令可以有多个，但是可以用 && 连接多个命令来减少层级。
 # 例如 RUN npm install && cd /app && mkdir logs
-RUN npm install
+# 安装本地依赖环境，更改东八CST-8时区
+# 如果宿主机无法访问外网，可以替换国内apk源：
+# https://juejin.cn/post/6854573214698307597
+RUN npm install \
+    && apk add tzdata \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone
 
 # CMD 指令只能一个，是容器启动后执行的命令，算是程序的入口。
 # 如果还需要运行其他命令可以用 && 连接，也可以写成一个shell脚本去执行。
