@@ -88,7 +88,7 @@ http {
         server_name api.newlandsvc.tech;
 
         location / {
-            proxy_pass http://61.183.42.177:8081;
+            proxy_pass http://**.***.**.***:8081;
         }
     }
 
@@ -107,7 +107,7 @@ http {
         client_max_body_size 1024m;
 
         location / {
-            proxy_pass http://61.183.42.177:8081;
+            proxy_pass http://**.***.**.***:8081;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
