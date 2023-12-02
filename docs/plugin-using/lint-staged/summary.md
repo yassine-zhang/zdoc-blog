@@ -1,4 +1,4 @@
-# Lint Staged
+# 推荐Git有效防止提交垃圾代码的插件模块 {#lint-Staged}
 
 > 这是一个可以防止垃圾代码存入仓库的repo,通常可以搭配Git钩子+Linters(代码格式化)实现很好的效果。
 

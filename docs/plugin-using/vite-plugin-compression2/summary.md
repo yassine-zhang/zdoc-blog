@@ -1,4 +1,4 @@
-# Vite-Plugin-Compression2
+# Vite GZIP压缩插件推荐 {#Vite-Plugin-Compression2}
 
 插件npm链接：https://www.npmjs.com/package/vite-plugin-compression2
 

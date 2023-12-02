@@ -1,4 +1,4 @@
-# Prettier
+# prettier代码格式化中文文档 {#prettier-cndoc}
 
 **什么是Prettier?**
 

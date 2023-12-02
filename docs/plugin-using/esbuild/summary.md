@@ -1,3 +1,5 @@
+# esbuild-中文文档 {#esbuild-cndoc}
+
 <p style="display: flex; align-items: center;">
   <img src="./favicon.svg" alt="esbuild" width="80" style="display: inline-block;" /><span style="display: inline-block; font-size: 38px; margin-left: 10px;">esbuild</span>
 </p>

@@ -65,11 +65,80 @@ export default defineConfig({
             text: "SSL证书签发&使用",
             link: "/mainland-pass/ssl-license/summary",
           },
+          {
+            text: "二级域名解析&使用",
+            link: "/mainland-pass/level2-domain-resolve/summary",
+          },
+          {
+            text: "Nginx项目前后端配置案例",
+            link: "/mainland-pass/website-nginx-configuration/summary",
+          },
         ],
       },
       {
-        text: "插件使用",
-        link: "/plugin-using/lint-staged/summary",
+        text: "模块使用",
+        items: [
+          {
+            text: "防止提交lj/lint-staged",
+            link: "/plugin-using/lint-staged/summary",
+          },
+          {
+            text: "代码格式化/Prettier",
+            link: "/plugin-using/prettier/summary",
+          },
+          {
+            text: "stdin&out着色/kolorist",
+            link: "/plugin-using/kolorist/summary",
+          },
+          {
+            text: "前端Shell利器/zx",
+            link: "/plugin-using/zx/summary",
+          },
+          {
+            text: "解析参数选项/minimist",
+            link: "/plugin-using/minimist/summary",
+          },
+          {
+            text: "交互式提示/prompts",
+            link: "/plugin-using/prompts/summary",
+          },
+          {
+            text: "更快的前端构建工具/esbuild",
+            link: "/plugin-using/esbuild/summary",
+          },
+          {
+            text: "esbuild许可证插件",
+            link: "/plugin-using/esbuild-plugin-license/summary",
+          },
+          {
+            text: "控制台渐变/gradient-string",
+            link: "/plugin-using/gradient-string/summary",
+          },
+          {
+            text: "Vite gzip压缩插件",
+            link: "/plugin-using/vite-plugin-compression2/summary",
+          },
+          {
+            text: "Pinia持久化存储插件",
+            link: "https://seb-l.github.io/pinia-plugin-persist/",
+          },
+          {
+            text: "fs-extra NodeJS扩展方法",
+            link: "/plugin-using/fs-extra/summary",
+          },
+          {
+            text: "promise-retry重试函数",
+            link: "/plugin-using/promise-retry/summary",
+          },
+          {
+            text: "Moment.js",
+            link: "https://moment.nodejs.cn/",
+          },
+          {
+            text: "CryptoJS实现标准安全加密",
+            link: "https://cryptojs.gitbook.io/docs/",
+          },
+        ],
       },
       {
         text: "关于",
@@ -187,10 +256,18 @@ export default defineConfig({
             text: "SSL证书签发&使用",
             link: "/mainland-pass/ssl-license/summary",
           },
+          {
+            text: "二级域名解析&使用",
+            link: "/mainland-pass/level2-domain-resolve/summary",
+          },
+          {
+            text: "Nginx项目前后端配置案例",
+            link: "/mainland-pass/website-nginx-configuration/summary",
+          },
         ],
       },
       {
-        text: "插件使用",
+        text: "模块使用",
         items: [
           {
             text: "防止提交lj/lint-staged",

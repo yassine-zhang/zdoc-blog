@@ -31,9 +31,9 @@ features:
       src: mainland.svg
     link: /mainland-pass/domain-name-filing/summary
     details: 想在中国内陆互联网畅通无阻就必须明白这几件事...
-  - title: 插件使用
+  - title: 模块使用
     icon:
       src: plugin-use.svg
     link: /plugin-using/lint-staged/summary
-    details: Github各种有用插件的使用简记
+    details: Github各种有用模块插件的使用简记，翻译转换
 ---

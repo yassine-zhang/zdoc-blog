@@ -1,4 +1,4 @@
-# Kolorist
+# Kolorist中文文档 {#kolorist-cndoc}
 
 将颜色放入stdin/stdout极小的工具库🎉
 

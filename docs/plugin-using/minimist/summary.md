@@ -1,4 +1,4 @@
-# minimist <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
+# Node.js控制台传参数命令插件minimist中文文档 {#minimist-cndoc}
 
 <div style="display:flex; margin: 10px 0">
     <a href="https://github.com/minimistjs/minimist/actions"><img src="https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/minimistjs/minimist" alt="github actions"></a>

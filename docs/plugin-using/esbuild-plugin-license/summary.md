@@ -1,4 +1,4 @@
-# esbuild-plugin-license
+# esbuild许可证插件中文文档 {#esbuild-plugin-license-cndoc}
 
 <div style="display:flex; margin: 10px 0">
     <a href="https://www.npmjs.com/package/esbuild-plugin-license"><img src="https://img.shields.io/npm/v/esbuild-plugin-license/latest?style=flat-square" alt="npm (tag)"></a>

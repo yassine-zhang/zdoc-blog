@@ -1,4 +1,4 @@
-# gradient-string
+# gradient-string中文文档 {#gradient-string-cndoc}
 
 <div style="display:flex; margin: 10px 0">
     <a href="https://github.com/bokub/gradient-string/actions/workflows/run.yml"><img src="https://flat.badgen.net/github/checks/bokub/gradient-string?label=tests" alt="Build Status"></a>

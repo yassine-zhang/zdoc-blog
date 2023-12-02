@@ -2,7 +2,7 @@
 aside: true
 ---
 
-# promise-retry
+# promise-retry异步重试模块中文文档 {#promise-retry-cndoc}
 
 <div style="display:flex; margin: 10px 0">
     <a href="https://npmjs.org/package/promise-retry"><img src="http://img.shields.io/npm/v/promise-retry.svg" alt="github actions"></a>
