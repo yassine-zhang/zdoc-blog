@@ -138,6 +138,10 @@ export default defineConfig({
             text: "CryptoJS实现标准安全加密",
             link: "https://cryptojs.gitbook.io/docs/",
           },
+          {
+            text: "npm-run-all2多脚本运行",
+            link: "https://github.com/bcomnes/npm-run-all2/tree/master",
+          },
         ],
       },
       {
@@ -328,6 +332,10 @@ export default defineConfig({
           {
             text: "CryptoJS实现标准安全加密",
             link: "https://cryptojs.gitbook.io/docs/",
+          },
+          {
+            text: "npm-run-all2多脚本运行",
+            link: "https://github.com/bcomnes/npm-run-all2/tree/master",
           },
         ],
       },
