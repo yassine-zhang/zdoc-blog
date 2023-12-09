@@ -69,6 +69,12 @@
     <br />
     <a-timeline mode="alternate">
       <a-timeline-item
+        >已开发上市《新大陆技能大赛技术分享》官网，包含前后端技术服务，进一步熟悉整个开发流程。
+        <a-typography-text strong
+          >2023-11-28</a-typography-text
+        ></a-timeline-item
+      >
+      <a-timeline-item
         >学习前后端流行相关技术架构，插件，库（<a-typography-text code
           >TailwindCSS、DaisyUI、AntDesignVue、Lodash、Docker、Nginx</a-typography-text
         >、etc），对于前后端整个体系有更清晰的概念

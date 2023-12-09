@@ -1,12 +1,14 @@
 import { defineConfig } from "vitepress";
-import fs from "fs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh",
-  title: "ZDoc",
+  title: "开发日志",
+  titleTemplate: "ZDoc",
   description: "ZDoc译为Zhang Documents，保持良好的心态书写独属于我的笔记",
-  cleanUrls: true,
+
+  // If, however, you cannot configure your server with such support (e.g. GitHub pages),
+  // cleanUrls: true,
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
   themeConfig: {
@@ -372,10 +374,6 @@ export default defineConfig({
       text: "Edit this page on GitHub",
     },
 
-    lastUpdated: {
-      text: "上次更新",
-    },
-
     search: {
       provider: "local",
     },
@@ -386,6 +384,8 @@ export default defineConfig({
       level: [2, 4],
     },
   },
+
+  lastUpdated: true,
 
   // markdown: {
   //   theme: {
