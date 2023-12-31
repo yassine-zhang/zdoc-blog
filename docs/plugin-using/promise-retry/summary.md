@@ -5,8 +5,8 @@ aside: true
 # promise-retry异步重试模块中文文档 {#promise-retry-cndoc}
 
 <div style="display:flex; margin: 10px 0">
-    <a href="https://npmjs.org/package/promise-retry"><img src="http://img.shields.io/npm/v/promise-retry.svg" alt="github actions"></a>
-    <a style="margin-left: 4px;" href="https://npmjs.org/package/promise-retry"><img src="http://img.shields.io/npm/dm/promise-retry.svg" alt="github actions"></a>
+    <a href="https://npmjs.org/package/promise-retry"><img src="https://img.shields.io/npm/v/promise-retry.svg" alt="github actions"></a>
+    <a style="margin-left: 4px;" href="https://npmjs.org/package/promise-retry"><img src="https://img.shields.io/npm/dm/promise-retry.svg" alt="github actions"></a>
 </div>
 
 利用`retry`模块的强大功能，重试返回一个异步函数。
@@ -26,8 +26,6 @@ Repository: [https://github.com/IndigoUnited/node-promise-retry](https://github.
 
 - `retry` - 每次需要再次调用函数重新尝试时传入此函数一个错误信息，例如，retry(err)。
 - `number` - 执行的次数，首次也算在内。
-
-(可以直接传入一个或两个下面参数的异步函数，也可以传入一个普通函数最终返回一个异步函数)
 
 ---
 

@@ -1,6 +1,6 @@
 /* 引入字体 */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +8,7 @@
 
 /* 修复tailwind和vitepress之间mono代码样式权级问题 */
 code {
-  font-family: "Roboto Mono", monospace !important;
+  /* font-family: "Roboto Mono", monospace !important; */
 }
 
 /* 调整区块引用左边边框宽度 */
@@ -34,8 +34,8 @@ code {
   --vp-code-bg: #eff1f2;
   /* --vp-code-color: #3451b2; */
   --vp-c-border: transparent;
-  --vp-font-family-base: "Noto Sans SC", arial, sans-serif;
-  --vp-font-family-mono: "Roboto Mono", monospace;
+  /* --vp-font-family-base: "Noto Sans SC", arial, sans-serif; */
+  /* --vp-font-family-mono: "Roboto Mono", monospace; */
 
   /* 标题 */
   --vp-home-hero-name-color: transparent;
