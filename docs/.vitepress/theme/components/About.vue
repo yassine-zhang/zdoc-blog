@@ -69,6 +69,10 @@
     <br />
     <a-timeline mode="alternate">
       <a-timeline-item
+        >今天突然意识到自己头发越来越稀薄，头顶发际线都差点遮不住，以后一定不要再熬夜了。最近压力好大，哎。（暂时还没开发个人生活小记网站，先暂时在这儿记下所思所想了）
+        <a-typography-text strong>2024-1-1</a-typography-text></a-timeline-item
+      >
+      <a-timeline-item
         >已开发上市《新大陆技能大赛技术分享》官网，包含前后端技术服务，进一步熟悉整个开发流程。
         <a-typography-text strong
           >2023-11-28</a-typography-text
