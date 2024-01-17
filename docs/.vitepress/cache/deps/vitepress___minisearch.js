@@ -1365,6 +1365,7 @@ var MiniSearch =
             id: this._documentIds.get(docId),
             score: score * quality,
             terms: Object.keys(match),
+            queryTerms: terms,
             match,
           };
           Object.assign(result, this._storedFields.get(docId));
