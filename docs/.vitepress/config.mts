@@ -14,7 +14,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      // { text: 'Home', link: '/' },
+      // { text: 'CSS样式', items: [] },
       {
         text: "安全指南",
         items: [

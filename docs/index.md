@@ -21,6 +21,11 @@ features:
       src: normalize.svg
     link: /specification/fs-extra/summary
     details: 学习不同框架开发者前辈们的编程项目规范，并提取核心点
+  - title: Docker手册
+    icon:
+      src: docker.svg
+    link: /docker/inspect
+    details: Docker学习历程
   - title: 速查表
     icon:
       src: zoom-table.svg
@@ -36,4 +41,9 @@ features:
       src: plugin-use.svg
     link: /plugin-using/lint-staged/summary
     details: Github各种有用模块插件的使用简记，翻译转换
+  - title: Nginx手册
+    icon:
+      src: nginx.svg
+    link: https://dunwu.github.io/nginx-tutorial/#/nginx-quickstart
+    details: 本项目是一个 Nginx 极简教程，目的在于帮助新手快速入门 Nginx。
 ---
