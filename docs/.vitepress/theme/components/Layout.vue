@@ -61,9 +61,9 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
               </template>
               关注
             </a-button>
-            <a-badge dot :offset="[-5, 5]">
+            <a-badge class="dot" dot :offset="[-5, 5]">
               <a-button
-                class="font-medium"
+                class="font-medium more"
                 size="large"
                 shape="round"
                 href="/about"
@@ -78,6 +78,20 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
 </template>
 
 <style>
+html[class*="dark"] .dot sup {
+  display: none;
+}
+html[class*="dark"] .more {
+  background-color: #202126;
+  border: 1px solid transparent;
+  transition: all 200ms;
+  color: #95959c;
+}
+html[class*="dark"] .more:hover {
+  color: #fff;
+  border: 1px solid #4874ee;
+}
+
 .VPHero {
   padding-bottom: 20px !important;
 }
