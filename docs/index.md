@@ -6,9 +6,6 @@ hero:
   name: "ZDoc"
   text: "赋予程序以生命"
   tagline: ZDoc译为Zhang Documents，保持良好的心态书写独属于我的笔记💪
-  image:
-    src: safe.svg
-    alt: logo
 
 features:
   - title: 安全指南

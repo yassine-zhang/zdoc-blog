@@ -46,9 +46,9 @@ code {
   );
 
   /* 图标背景 */
-  --vp-home-hero-image-background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+  /*--vp-home-hero-image-background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);*/
 
-  --vp-home-hero-image-filter: blur(72px);
+  /*--vp-home-hero-image-filter: blur(72px);*/
 
   /* brand主按钮背景色 */
   --vp-button-brand-bg: #f19b53;
