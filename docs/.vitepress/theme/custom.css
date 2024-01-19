@@ -59,6 +59,9 @@ code {
   /* 主要颜色值 */
   /* --vp-c-brand-1: #e46b59; */
   --vp-c-brand-1: #3875f6;
+
+  /* VPHomeHero区域底部表面颜色 */
+  --vp-background-surface-color: #fff;
 }
 
 /* .dark 暗黑模式下修改行内代码颜色值 */
@@ -78,9 +81,17 @@ code {
 
   /* 主要颜色值 */
   /* --vp-c-brand-1: #f8d367; */
+
+  /* VPHomeHero区域底部表面颜色 */
+  --vp-background-surface-color: #0f1116;
 }
 
 /* 修改默认light模式下行内代码颜色 */
 .vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
   color: var(--vp-code-color);
+}
+
+/* 取消顶部导航栏渐变背景色 */
+.VPNavBar {
+  transition: none !important;
 }

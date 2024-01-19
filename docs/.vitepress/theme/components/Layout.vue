@@ -1,12 +1,28 @@
 <!-- .vitepress/theme/Layout.vue -->
 
-<script setup>
+<script lang="ts" setup>
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme-without-fonts";
 import { nextTick, provide } from "vue";
 import Bilibili from "./../icons/bilibili.vue";
+import { NotificationPlacement, notification } from "ant-design-vue";
 
 const { isDark } = useData();
+const [api, contextHolder] = notification.useNotification();
+const open = (placement: NotificationPlacement) => openNotification(placement);
+const openNotification = (placement: NotificationPlacement) => {
+  api.info({
+    message: `消息通知`,
+    description:
+      "陌生人你好，非常感谢你能来我的个人博客查阅内容，如果有什么不足还请多多指教，可通过Github提PR或issues。",
+    placement,
+  });
+};
+
+const id = setTimeout(() => {
+  open("bottomRight");
+  clearTimeout(id);
+}, 600);
 
 const enableTransitions = () =>
   "startViewTransition" in document &&
@@ -43,41 +59,58 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
 </script>
 
 <template>
-  <DefaultTheme.Layout>
-    <template #home-hero-after>
-      <div class="HomeHeroAfter">
-        <div class="max-w-[1152px] mx-auto">
-          <a-space class="container w-full">
-            <a-button
-              class="font-medium flex justify-center items-center gap-2"
-              type="primary"
-              shape="round"
-              size="large"
-              target="__blank"
-              href="https://space.bilibili.com/483711690?spm_id_from=333.1007.0.0"
-            >
-              <template #icon>
-                <Bilibili />
-              </template>
-              关注
-            </a-button>
-            <a-badge class="dot" dot :offset="[-5, 5]">
-              <a-button
-                class="font-medium more"
-                size="large"
-                shape="round"
-                href="/about"
-                >了解作者</a-button
-              >
-            </a-badge>
-          </a-space>
-        </div>
-      </div>
-    </template>
-  </DefaultTheme.Layout>
+  <contextHolder />
+  <DefaultTheme.Layout> </DefaultTheme.Layout>
 </template>
 
 <style>
+.home-hero-bg {
+  -webkit-animation: 2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards b;
+  animation: 2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards b;
+  background:
+    linear-gradient(-90deg, #6d6d6d25 1px, transparent 0),
+    linear-gradient(#6d6d6d25 1px, transparent 0),
+    linear-gradient(-90deg, #6d6d6d25 1px, transparent 0),
+    linear-gradient(#6d6d6d25 1px, transparent 0),
+    linear-gradient(
+      transparent 6px,
+      transparent 0,
+      transparent 156px,
+      transparent 0
+    ),
+    linear-gradient(-90deg, #6d6d6d25 1px, transparent 0),
+    linear-gradient(
+      -90deg,
+      transparent 6px,
+      transparent 0,
+      transparent 156px,
+      transparent 0
+    ),
+    linear-gradient(#6d6d6d25 1px, transparent 0),
+    0 0;
+  background-size:
+    32px 32px,
+    32px 32px,
+    256px 256px,
+    256px 256px,
+    256px 256px,
+    256px 256px,
+    256px 256px,
+    256px 256px;
+}
+.home-hero-bg:after {
+  background: linear-gradient(transparent, var(--vp-background-surface-color));
+  content: "";
+  inset: 70% 0 0;
+  position: absolute;
+}
+
+@keyframes b {
+  0% {
+    background-position: 0 50px;
+  }
+}
+
 html[class*="dark"] .dot sup {
   display: none;
 }
@@ -90,37 +123,6 @@ html[class*="dark"] .more {
 html[class*="dark"] .more:hover {
   color: #fff;
   border: 1px solid #4874ee;
-}
-
-.VPHero {
-  padding-bottom: 20px !important;
-}
-@media (min-width: 640px) {
-  .HomeHeroAfter {
-    padding: 0 48px;
-    padding-bottom: 80px;
-  }
-  .HomeHeroAfter .container {
-    justify-content: center;
-  }
-}
-@media (min-width: 960px) {
-  .HomeHeroAfter {
-    padding: 0 64px;
-    padding-bottom: 80px;
-  }
-  .HomeHeroAfter .container {
-    justify-content: left;
-  }
-}
-@media (max-width: 639px) {
-  .HomeHeroAfter {
-    padding: 0 24px;
-    padding-bottom: 80px;
-  }
-  .HomeHeroAfter .container {
-    justify-content: center;
-  }
 }
 
 ::view-transition-old(root),
