@@ -44,25 +44,45 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      // { text: 'CSS样式', items: [] },
       {
-        text: "安全指南",
+        text: "前端杂文",
         items: [
-          { text: "JavaScript", link: "/safety-guidelines/js/trusted-event" },
-          { text: "Linux", link: "/safety-guidelines/linux/summary" },
-        ],
-      },
-      {
-        text: "项目规范",
-        items: [
-          { text: "fs-extra", link: "/specification/fs-extra/summary" },
-          { text: "create-vue", link: "/specification/create-vue/summary" },
           {
-            text: "[language]",
-            link: "/specification/language/alternate-if-syntax/summary",
+            text: "延迟等待下一绘制帧",
+            link: "/front-end-essay/next-draw-frame/summary",
+          },
+          {
+            text: "不同设备最佳匹配img.src",
+            link: "https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/picture",
+          },
+          {
+            text: "获取元素真实样式",
+            link: "/front-end-essay/real-time-style/summary",
           },
         ],
       },
+      // {
+      //   text: '后端杂文',
+      //   link: '#'
+      // },
+      // {
+      //   text: "安全指南",
+      //   items: [
+      //     { text: "JavaScript", link: "/safety-guidelines/js/trusted-event" },
+      //     { text: "Linux", link: "/safety-guidelines/linux/summary" },
+      //   ],
+      // },
+      // {
+      //   text: "项目规范",
+      //   items: [
+      //     { text: "fs-extra", link: "/specification/fs-extra/summary" },
+      //     { text: "create-vue", link: "/specification/create-vue/summary" },
+      //     {
+      //       text: "[language]",
+      //       link: "/specification/language/alternate-if-syntax/summary",
+      //     },
+      //   ],
+      // },
       {
         text: "通用工具",
         items: [

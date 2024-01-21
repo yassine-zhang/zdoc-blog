@@ -1,26 +1,28 @@
 # centos-cheat-sheet
-| Description                        |   Syntax&Error                                                    |
-| ---------------------------------- | ----------------------------------------------------------------- |
-| 防火墙(注意用户权限，提权sudo) | firewall-cmd |
-| &nbsp;&nbsp;命令永久生效 | &nbsp;--permanent, 可简写为--per, 使用后应重新加载防火墙规则 |
-| &nbsp;&nbsp;选择指定区域 | &nbsp;--zone=&#60;specified zone&#62;， 例如--zone=docker |
-| 检查防火墙状态 | firewall-cmd --state |
-| 启动防火墙 | systemctl start firewalld |
-| 停止防火墙 | systemctl stop firewalld |
-| 设置开机自启动防火墙 | systemctl enable firewalld |
-| 查看防火墙规则 | firewall-cmd --list-all |
-| 重新加载防火墙规则 | firewall-cmd --reload |
-| 查看打开的端口 | firewall-cmd --list-ports |
-| 查看允许通过的服务 | firewall-cmd --list-services |
-| 查看默认区域防火墙配置 | firewall-cmd --list-all-zones |
-| 获取当前活跃的区域（zone | firewall-cmd --get-active-zones |
-| 删除活跃的区域 | firewall-cmd --remove-interface=&#60;interface_name&#62; --zone=&#60;zone_name&#62; |
-| 将默认接口（例如eth0）的区域永久设置为活跃状态 | firewall-cmd --zone=public --change-interface=eth0 --per |
-| 配置防火墙默认区域目标（可以是default、accept、drop） | firewall-cmd --zone=public --set-target=DROP |
-| &nbsp;&nbsp;--set-target=default | 当使用 default 作为 target 时，防火墙将按照后续定义的规则依次进行匹配，直到找到与数据包匹配的规则。如果没有适用的规则，那么会应用默认策略。 |
-| 允许特定端口/服务通过防火墙（永久生效） | firewall-cmd --permanent --add-port=&#60;port&#62;/tcp <br> firewall-cmd --permanent --add-service=&#60;service&#62; |
-| 移除特定端口/服务的防火墙规则 | firewall-cmd --remove-port=&#60;port&#62;/tcp <br> firewall-cmd --remove-service=&#60;service&#62; |
-| 请注意，对于生产环境中的服务器，建议仔细规划防火墙规则，只允许必要的端口和服务通过，并定期进行安全审查和更新。 | 以上命令中，&#60;port&#62;可以是具体的端口号，例如80或443，&#60;service&#62;可以是已知的服务名称，例如http、https等。 |
-| ---------- | ---------- |
-| 查看剩余磁盘空间（关注/dev/vda1..2..3或/dev/sda1..2..3） | df -h |
 
+| Description                                                                                                    | Syntax&Error                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 防火墙(注意用户权限，提权sudo)                                                                                 | firewall-cmd                                                                                                                                |
+| &nbsp;&nbsp;命令永久生效                                                                                       | &nbsp;--permanent, 可简写为--per, 使用后应重新加载防火墙规则                                                                                |
+| &nbsp;&nbsp;选择指定区域                                                                                       | &nbsp;--zone=&#60;specified zone&#62;， 例如--zone=docker                                                                                   |
+| 检查防火墙状态                                                                                                 | firewall-cmd --state                                                                                                                        |
+| 启动防火墙                                                                                                     | systemctl start firewalld                                                                                                                   |
+| 停止防火墙                                                                                                     | systemctl stop firewalld                                                                                                                    |
+| 设置开机自启动防火墙                                                                                           | systemctl enable firewalld                                                                                                                  |
+| 查看防火墙规则                                                                                                 | firewall-cmd --list-all                                                                                                                     |
+| 重新加载防火墙规则                                                                                             | firewall-cmd --reload                                                                                                                       |
+| 查看打开的端口                                                                                                 | firewall-cmd --list-ports                                                                                                                   |
+| 查看允许通过的服务                                                                                             | firewall-cmd --list-services                                                                                                                |
+| 查看默认区域防火墙配置                                                                                         | firewall-cmd --list-all-zones                                                                                                               |
+| 获取当前活跃的区域（zone                                                                                       | firewall-cmd --get-active-zones                                                                                                             |
+| 删除活跃的区域                                                                                                 | firewall-cmd --remove-interface=&#60;interface_name&#62; --zone=&#60;zone_name&#62;                                                         |
+| 将默认接口（例如eth0）的区域永久设置为活跃状态                                                                 | firewall-cmd --zone=public --change-interface=eth0 --per                                                                                    |
+| 配置防火墙默认区域目标（可以是default、accept、drop）                                                          | firewall-cmd --zone=public --set-target=DROP                                                                                                |
+| &nbsp;&nbsp;--set-target=default                                                                               | 当使用 default 作为 target 时，防火墙将按照后续定义的规则依次进行匹配，直到找到与数据包匹配的规则。如果没有适用的规则，那么会应用默认策略。 |
+| 允许特定端口/服务通过防火墙（永久生效）                                                                        | firewall-cmd --permanent --add-port=&#60;port&#62;/tcp <br> firewall-cmd --permanent --add-service=&#60;service&#62;                        |
+| 移除特定端口/服务的防火墙规则                                                                                  | firewall-cmd --remove-port=&#60;port&#62;/tcp <br> firewall-cmd --remove-service=&#60;service&#62;                                          |
+| 请注意，对于生产环境中的服务器，建议仔细规划防火墙规则，只允许必要的端口和服务通过，并定期进行安全审查和更新。 | 以上命令中，&#60;port&#62;可以是具体的端口号，例如80或443，&#60;service&#62;可以是已知的服务名称，例如http、https等。                       |
+| ----------                                                                                                     | ----------                                                                                                                                  |
+| 查看剩余磁盘空间（关注/dev/vda1..2..3或/dev/sda1..2..3）                                                       | df -h                                                                                                                                       |
+| 远程传输文件                                                                                                   | scp -r \* root@ip:/server/nginx/html/                                                                                                       |
+| 递归删除当前文件夹及其内部所有子文件夹文件                                                                     | rm -rf \*                                                                                                                                   |

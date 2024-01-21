@@ -58,6 +58,7 @@ services:
      - MYSQL_DATABASE=docker_node
     ports:
       - "8081:32763"
+    restart: always
     depends_on: #node服务依靠mysql 要先等mysql启动
       - mysql
     networks:

@@ -135,6 +135,24 @@ http {
 }
 ```
 
+## HTML5 History Mode
+
+如果您的网站是一个单页面应用程序 (SPA)，那么您需要为所有请求返回 index.html 文件，然后在客户端使用 JavaScript 路由处理页面导航。这种模式称为 HTML5 History 模式。
+
+要在 Nginx 中配置 HTML5 History 模式，您可以使用以下配置：
+
+```shell
+location / {
+    root /usr/share/nginx/html;
+    index index.html;
+    try_files $uri $uri/ /index.html;
+}
+```
+
+::: warning 注意
+如果你想在上面配置案例中使用 try_files ，需要替换 123~126 行代码。
+:::
+
 ## 日志输出，GZIP压缩
 
 - `error_log`: 错误日志，参考第6行，指定了错误日志存储路径。错误级别`notice`，除此之外还有`info`、`debug`。
