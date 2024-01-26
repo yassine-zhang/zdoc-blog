@@ -45,6 +45,12 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       {
+        text: "错误日志",
+        items: [
+          { text: "curl安装Bun", link: "/error-log/curl-install-bun/summary" },
+        ]
+      },
+      {
         text: "前端杂文",
         items: [
           {
