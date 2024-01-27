@@ -29,23 +29,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      # - uses: pnpm/action-setup@v2 # Uncomment this if you're using pnpm
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-          cache: bun # or pnpm / yarn
+          bun-version: latest
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Install dependencies
-        run: bun install # or pnpm install / npm ci / yarn install
+        run: bun install
       - name: Build with VitePress
         run: |
-          bun docs:build # or pnpm docs:build / npm run docs:build / yarn docs:build
-          touch docs/.vitepress/dist/.nojekyll
+          bun docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
@@ -62,4 +59,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
