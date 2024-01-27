@@ -1,6 +1,6 @@
 # Do not format md documents that contain tables.
-# docs/common-tools/cheat-sheet/*.md
-# docs/docker/registry.md
+docs/common-tools/cheat-sheet/*.md
+docs/docker/registry.md
 
 # Avoid other formatting problems that affect change observability.
 docs/safety-guidelines/js/cors-desc.md
