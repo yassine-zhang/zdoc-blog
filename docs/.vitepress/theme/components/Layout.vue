@@ -4,25 +4,8 @@
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme-without-fonts";
 import { nextTick, provide } from "vue";
-import Bilibili from "./../icons/bilibili.vue";
-import { NotificationPlacement, notification } from "ant-design-vue";
 
 const { isDark } = useData();
-const [api, contextHolder] = notification.useNotification();
-const open = (placement: NotificationPlacement) => openNotification(placement);
-const openNotification = (placement: NotificationPlacement) => {
-  api.info({
-    message: `消息通知`,
-    description:
-      "陌生人你好，非常感谢你能来我的个人博客查阅内容，如果有什么不足还请多多指教，可通过Github提PR或issues。",
-    placement,
-  });
-};
-
-const id = setTimeout(() => {
-  open("bottomRight");
-  clearTimeout(id);
-}, 600);
 
 const enableTransitions = () =>
   "startViewTransition" in document &&

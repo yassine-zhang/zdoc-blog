@@ -22,9 +22,7 @@ export default defineConfig({
 
   // If, however, you cannot configure your server with such support (e.g. GitHub pages),
   cleanUrls: true,
-  head: [
-    ["link", { rel: "icon", href: "/favicon.ico" }],
-  ],
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -32,8 +30,12 @@ export default defineConfig({
       {
         text: "错误日志",
         items: [
-          { text: "curl安装Bun", link: "/error-log/curl-install-bun/summary" },
-        ]
+          { text: "CURL安装Bun", link: "/error-log/curl-install-bun/summary" },
+          {
+            text: "ClashXPremium增强模式的好处",
+            link: "/error-log/clash-x-pre-enhancement-mode/summary",
+          },
+        ],
       },
       {
         text: "前端杂文",
@@ -52,10 +54,6 @@ export default defineConfig({
           },
         ],
       },
-      // {
-      //   text: '后端杂文',
-      //   link: '#'
-      // },
       // {
       //   text: "安全指南",
       //   items: [
