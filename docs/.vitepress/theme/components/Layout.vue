@@ -42,7 +42,6 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }) => {
 </script>
 
 <template>
-  <contextHolder />
   <DefaultTheme.Layout> </DefaultTheme.Layout>
 </template>
 
