@@ -109,11 +109,12 @@ docker stop nginx-1
 docker rm nginx-1
 
 ## 映射容器目录
-docker run -d -p 80:80 -p 443:443 --name --restart nginx-1 \
+docker run -d -p 80:80 -p 443:443 --name nginx-1 \
 -v /server/nginx/html:/usr/share/nginx/html \
 -v /server/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
 -v /server/nginx/logs:/var/log/nginx \
--v /server/nginx/cert:/etc/nginx/cert  \
+-v /server/nginx/cert:/etc/nginx/cert \
+--restart=always \
 nginx:latest
 
 ## 查看容器是否在运行
