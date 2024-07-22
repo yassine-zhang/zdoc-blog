@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
-    "ant-design-vue": "^4.0.7"
+    "ant-design-vue": "^4.0.7",
+    "caniuse-lite": ""
   }
 }

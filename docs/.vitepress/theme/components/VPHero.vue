@@ -54,7 +54,7 @@ const heroImageSlotExists = inject("hero-image-slot-exists") as Ref<boolean>;
                 shape="round"
                 size="large"
                 target="__blank"
-                href="https://space.bilibili.com/483711690?spm_id_from=333.1007.0.0"
+                href="https://space.bilibili.com/3493138205247599?spm_id_from=..0.0"
               >
                 <template #icon>
                   <Bilibili />
@@ -131,7 +131,7 @@ const heroImageSlotExists = inject("hero-image-slot-exists") as Ref<boolean>;
 
 .name,
 .text {
-  //max-width: 392px;
+  max-width: 392px;
   letter-spacing: -0.4px;
   line-height: 40px;
   font-size: 32px;

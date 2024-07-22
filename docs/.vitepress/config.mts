@@ -431,9 +431,4 @@ export default defineConfig({
   },
 
   lastUpdated: true,
-
-  // SEO sitemap.xml相关配置
-  sitemap: {
-    hostname: "https://reports.org.cn",
-  },
 });
